@@ -1,14 +1,17 @@
 package logica;
 
 import java.util.Iterator;
+
+import javax.swing.plaf.basic.BasicTreeUI.TreeCancelEditingAction;
+
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 
 public class Systema {
+	
     private String name;
     private ILinkedWeightedEdgeNotDirectedGraph graph;
-    private ArrayList <String> array;
 
     public Systema(String name) {
         this.name = name;
@@ -65,5 +68,14 @@ public class Systema {
     	return aux;
     }
     
+    public boolean crearSolicitud(Person envia, Person recibe, int cantdTrabajo) {
+    	boolean creada= false;
+    	Vertex aux= findNick(recibe.getNick());
+    	if(aux != null) {
+    		((Person)aux.getInfo()).getSolicitudAmistad().offer(new Solicitud(envia, cantdTrabajo));
+    		creada= true;
+    	}
+    	return creada;
+    }
     
 }

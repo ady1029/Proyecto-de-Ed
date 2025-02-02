@@ -1,5 +1,6 @@
 package logica;
 
+import java.util.LinkedList;
 import java.util.Queue;
 
 public class Person {
@@ -9,11 +10,12 @@ public class Person {
     private String occupation;
     private Queue <Solicitud> solicitudAmistad;
 
-    public Person(String nick, String password, String country,String country1) {
+    public Person(String nick, String password, String country,String occupation) {
         setNick(nick);
         setPassword(password);
+        setCountry(country);
         setOccupation(occupation);
-        this.country = country1;
+        solicitudAmistad= new LinkedList<Solicitud>();
     }
 
     public String getNick() {
