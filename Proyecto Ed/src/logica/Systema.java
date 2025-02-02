@@ -89,4 +89,14 @@ public class Systema {
 		}
 		return islas;
 	}
+	//Crear una neuva solicitud de amistad
+	public boolean crearSolicitud(Person envia, Person recibe, int cantdTrabajo) {
+    	boolean creada= false;
+    	Vertex aux= findNick(recibe.getNick());
+    	if(aux != null) {
+    		((Person)aux.getInfo()).getSolicitudAmistad().offer(new Solicitud(envia, cantdTrabajo));
+    		creada= true;
+    	}
+    	return creada;
+    }
 }
