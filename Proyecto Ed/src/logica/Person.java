@@ -9,11 +9,11 @@ public class Person {
     private String occupation;
     private Queue <Solicitud> solicitudAmistad;
 
-    public Person(String nick, String password, String country,String country1) {
+    public Person(String nick, String password, String ocupation, String country) {
         setNick(nick);
         setPassword(password);
-        setOccupation(occupation);
-        this.country = country1;
+        setOccupation(ocupation);
+        setCountry(country);
     }
 
     public String getNick() {
