@@ -22,9 +22,9 @@ public class MainPrueba {
 		//Prueba metodo obtener islas
 		Systema sis = new Systema("Hablemos");
 		ILinkedWeightedEdgeNotDirectedGraph grafo = new LinkedGraph();
-		Person num1 = new Person("Samira", "1234","Programadora","Cuba");
-		Person num2 = new Person("Marlon", "aaa", "Programador","Cuba" );
-		Person num3 = new Person("Adrian", "soy tonto", "Programador", "Cuba" );
+		Person num1 = new Person("Samira", "1234","Cuba", "Programadora");
+		Person num2 = new Person("Marlon", "aaa","Cuba", "Programador");
+		Person num3 = new Person("Adrian", "soy tonto", "Cuba" , "Programador");
 		grafo.insertVertex(num1);
 		grafo.insertVertex(num2);
 		grafo.insertVertex(num3);
