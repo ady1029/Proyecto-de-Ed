@@ -99,4 +99,18 @@ public class Systema {
     	}
     	return creada;
     }
+	public boolean isIsland(String nick){
+        Vertex a = findNick(nick);
+        LinkedList <Vertex> vertices = graph.getVerticesList();
+        int b = vertices.indexOf(a);
+        boolean island = false;
+        if(a != null){
+            LinkedList <Vertex> adyacentes = graph.adjacentsG(b);
+            if(adyacentes.size()== 0){
+                island = true;
+            } 
+        }
+        return island;
+    }
+    
 }
