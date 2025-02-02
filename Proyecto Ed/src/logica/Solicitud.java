@@ -20,6 +20,5 @@ public class Solicitud {
 		this.cantdTrabajos = cantdTrabajos;
 	}
 	
-	
 
 }
