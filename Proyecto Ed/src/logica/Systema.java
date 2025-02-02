@@ -8,6 +8,7 @@ import cu.edu.cujae.ceis.graph.vertex.Vertex;
 public class Systema {
     private String name;
     private ILinkedWeightedEdgeNotDirectedGraph graph;
+    private ArrayList <String> array;
 
     public Systema(String name) {
         this.name = name;
