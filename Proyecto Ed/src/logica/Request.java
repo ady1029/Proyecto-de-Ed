@@ -1,9 +1,9 @@
 package logica;
 
-public class Solicitud {
+public class Request {
 	private Person PersonaEnvia; 
 	private int cantdTrabajos;
-	public Solicitud(Person envia, int cantdTrabajo) {
+	public Request(Person envia, int cantdTrabajo) {
 		setPersonaEnvia(envia);
 		setCantdTrabajos(cantdTrabajo);
 	}

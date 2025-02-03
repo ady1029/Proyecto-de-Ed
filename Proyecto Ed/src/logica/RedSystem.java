@@ -12,7 +12,7 @@ public class RedSystem {
 	private String name;
 	private ILinkedWeightedEdgeNotDirectedGraph graph;
 
-	public Systema(String name) {
+	public RedSystem(String name) {
 		this.name = name;
 		this.graph = new LinkedGraph();
 	}
