@@ -101,7 +101,7 @@ public class RedSystem {
 		Vertex aux= findNick(recibe.getNick());
 		if(aux != null) {
 			if(((Person)aux.getInfo()).findSolicitud(envia.getNick())== null) {
-				((Person)aux.getInfo()).getSolicitudAmistad().offer(new Solicitud(envia, cantdTrabajo));
+				((Person)aux.getInfo()).getSolicitudAmistad().offer(new Request(envia, cantdTrabajo));
 				creada= true;
 			}
 		}
@@ -110,7 +110,7 @@ public class RedSystem {
 
 	//Crear nueva relacion de amistad   
 	public boolean crearNuevaRelacion(String nickSolicitado, Person acepta) {
-		Solicitud solicitud = acepta.aceptarSolicitud(nickSolicitado);
+		Request solicitud = acepta.aceptarSolicitud(nickSolicitado);
 		boolean creado= false;
 		if(solicitud != null) {
 			Vertex persona1= findNick(nickSolicitado);

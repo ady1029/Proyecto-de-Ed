@@ -6,14 +6,13 @@ import java.util.LinkedList;
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
-import cu.edu.cujae.ceis.tree.iterators.binary.SymmetricIterator;
 import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
 
 public class MainPrueba {
 
 	public static void main(String[] args) {
 
-		Systema sis = new Systema("Hablemos");
+		RedSystem sis = new RedSystem("Hablemos");
 		ILinkedWeightedEdgeNotDirectedGraph grafo = new LinkedGraph();
 		Person num1 = new Person("Samira", "1234","Cuba", "Programadora");
 		Person num2 = new Person("Marlon", "aaa","Cuba", "Programador");

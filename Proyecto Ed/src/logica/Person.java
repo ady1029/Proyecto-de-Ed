@@ -9,14 +9,14 @@ public class Person {
 	private String password;
 	private String country;
 	private String occupation;
-	private LinkedList <Solicitud> solicitudAmistad;
+	private LinkedList <Request> solicitudAmistad;
 
 	public Person(String nick, String password, String country,String occupation) {
 		setNick(nick);
 		setPassword(password);
 		setCountry(country);
 		setOccupation(occupation);
-		solicitudAmistad= new LinkedList<Solicitud>();
+		solicitudAmistad= new LinkedList<Request>();
 	}
 
 	public String getNick() {
@@ -51,25 +51,25 @@ public class Person {
 		this.country = country;
 	}
 
-	public Queue<Solicitud> getSolicitudAmistad() {
+	public Queue<Request> getSolicitudAmistad() {
 		return solicitudAmistad;
 	}
 
-	public void setSolicitudAmistad(LinkedList <Solicitud> solicitudAmistad) {
+	public void setSolicitudAmistad(LinkedList <Request> solicitudAmistad) {
 		this.solicitudAmistad = solicitudAmistad;
 	}
-	public Solicitud aceptarSolicitud(String nickSolicitante) {
-		Solicitud solicitud= findSolicitud(nickSolicitante);
+	public Request aceptarSolicitud(String nickSolicitante) {
+		Request solicitud= findSolicitud(nickSolicitante);
 		if(solicitud != null)
 			solicitudAmistad.remove(solicitud);
 		return solicitud;
 
 	}
-	public Solicitud findSolicitud(String nick) {
-		Solicitud solicitud= null;
-		Iterator <Solicitud> it= solicitudAmistad.iterator();
+	public Request findSolicitud(String nick) {
+		Request solicitud= null;
+		Iterator <Request> it= solicitudAmistad.iterator();
 		while(it.hasNext() && solicitud == null) {
-			Solicitud aux= it.next();
+			Request aux= it.next();
 			if(aux.getPersonaEnvia().getNick().equalsIgnoreCase(nick)) {
 				solicitud = aux;
 			}
