@@ -8,7 +8,7 @@ import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 
-public class Systema {
+public class RedSystem {
 	private String name;
 	private ILinkedWeightedEdgeNotDirectedGraph graph;
 
@@ -131,17 +131,6 @@ public class Systema {
 		visitados.add(persona);
 		int i=0;
 		insertarVertices(persona,arbol, visitados,i);
-
-
-
-
-
-
-
-
-
-
-
 		return arbol;
 	}
 
