@@ -8,7 +8,7 @@ import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
 
-public class MainPrueba {
+public class MainPrueba2 {
 
 	public static void main(String[] args) {
 
@@ -50,6 +50,8 @@ public class MainPrueba {
 			Person aux = a.next();
 			System.out.println(aux.getNick());
 		}	
+
+		
 
 	}
 }

@@ -3,14 +3,14 @@ package logica;
 import java.util.LinkedList;
 
 public class Comunity {
-    private String name ;
+    private int cantdIntegrantes ;
     private LinkedList <Person> integrantes;
 
-    public Comunity(String name){
-        setName(name);
+    public Comunity(int cantdIntegrantes){
+        setCantdintegrantes(cantdIntegrantes);
             }
         
-    private void setName(String name) {
-         this.name= name;
+    private void setCantdintegrantes(int cantdIntegrantes) {
+         this.cantdIntegrantes= cantdIntegrantes;
             }
 }
