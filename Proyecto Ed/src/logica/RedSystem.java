@@ -162,29 +162,36 @@ public class RedSystem {
         Iterator<Vertex> it = graph.getVerticesList().iterator();
         while (it.hasNext()) {
             Vertex aux = it.next();
-            LinkedList<Vertex> verticesVisitados = new LinkedList<>();
-            comunidadesPersona(aux, verticesVisitados,comunidades);
+            LinkedList<Vertex> comunidad = new LinkedList<>();
+            comunidadesPersona(aux, comunidad, comunidades);
         }
         return comunidades;
     }
 
-    private void comunidadesPersona(Vertex actual, LinkedList <Vertex> verticesVisitados, LinkedList <Comunity> comunidades) {
-        verticesVisitados.add(actual);
+    private void comunidadesPersona(Vertex actual, LinkedList <Vertex> comunidad, LinkedList <Comunity> comunidades) {
+        comunidad.add(actual);
         Iterator <Vertex> it= actual.getAdjacents().iterator();
         while(it.hasNext()){
             Vertex aux=it.next();
-            verticesVisitados.add(aux);
-            Iterator <Vertex> iteratorSecundario = aux.getAdjacents().iterator();
-            while(iteratorSecundario.hasNext()){
-                Vertex aux2= iteratorSecundario.next();
-                if(aux2.getAdjacents().contains(verticesVisitados)){
-
+            if(aux.getAdjacents().contains(comunidad)){
+                comunidadesPersona(aux, comunidad,comunidades);
+            }   
+            else {
+                comunidad.remove(actual);
+                if(comunidad.size() > 2){
+                    Iterator <Vertex> itConvertir= comunidad.iterator();
+                    LinkedList <Person> personas= new LinkedList<>();
+                    while(it.hasNext()){
+                        personas.add((Person)it.next().getInfo());
+                    }
+                    Comunity comun= new Comunity(personas.size(), personas);
+                    if(!comunidades.contains(comun))
+                        comunidades.add(comun);
                 }
-
+            }
+            comunidad.remove(actual);
         }
-
-        }
-
+        comunidad.remove(actual);
         }
 
 }
