@@ -1,24 +1,11 @@
 package interfaz;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTabbedPane;
-
-import java.awt.Cursor;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
-
-import javax.swing.DebugGraphics;
-import javax.swing.JInternalFrame;
-import javax.swing.JDesktopPane;
-
-import raven.swing.AvatarIcon;
-
-import javax.swing.Icon;
 
 import componentesVisuales.AvatarCircular;
 
@@ -26,11 +13,8 @@ import javax.swing.ImageIcon;
 import componentesVisuales.BotonAnimacion;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 import java.awt.Font;
-import componentesVisuales.JLabelAnimacion;
 import javax.swing.UIManager;
-import javax.swing.border.LineBorder;
 
 public class SolicitudesAmistad extends JFrame {
 

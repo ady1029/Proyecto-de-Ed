@@ -168,30 +168,29 @@ public class RedSystem {
         return comunidades;
     }
 
-    private void comunidadesPersona(Vertex actual, LinkedList <Vertex> comunidad, LinkedList <Comunity> comunidades) {
+    private void comunidadesPersona(Vertex actual, LinkedList<Vertex> comunidad, LinkedList<Comunity> comunidades) {
         comunidad.add(actual);
-        Iterator <Vertex> it= actual.getAdjacents().iterator();
-        while(it.hasNext()){
-            Vertex aux=it.next();
-            if(aux.getAdjacents().contains(comunidad)){
-                comunidadesPersona(aux, comunidad,comunidades);
-            }   
-            else {
-                comunidad.remove(actual);
-                if(comunidad.size() > 2){
-                    Iterator <Vertex> itConvertir= comunidad.iterator();
-                    LinkedList <Person> personas= new LinkedList<>();
-                    while(it.hasNext()){
-                        personas.add((Person)it.next().getInfo());
+        Iterator<Vertex> it = actual.getAdjacents().iterator();
+        while (it.hasNext()) {
+            Vertex aux = it.next();
+            if (!comunidad.contains(aux)) {
+                if (aux.getAdjacents().contains(comunidad)) {
+                    comunidadesPersona(aux, comunidad, comunidades);
+                } else {
+                    if (comunidad.size() > 2) {
+                        Iterator<Vertex> itConvertir = comunidad.iterator();
+                        LinkedList<Person> personas = new LinkedList<>();
+                        while (it.hasNext()) {
+                            personas.add((Person) it.next().getInfo());
+                        }
+                        Comunity comun = new Comunity(personas.size(), personas);
+                        if (!comunidades.contains(comun))
+                            comunidades.add(comun);
                     }
-                    Comunity comun= new Comunity(personas.size(), personas);
-                    if(!comunidades.contains(comun))
-                        comunidades.add(comun);
                 }
             }
-            comunidad.remove(actual);
         }
         comunidad.remove(actual);
-        }
+    }
 
 }
