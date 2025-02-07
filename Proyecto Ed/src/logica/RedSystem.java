@@ -1,6 +1,5 @@
 package logica;
 
-import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -149,7 +148,6 @@ public class RedSystem {
         while (it.hasNext()) {
             Vertex aux = it.next();
             if (!visitados.contains(aux)) {
-                BinaryTreeNode<Person> nodo = new BinaryTreeNode<Person>((Person) aux.getInfo());
                 arbol.insert((Person) aux.getInfo(), (Person) actual.getInfo());
                 visitados.add(aux);
             }
@@ -178,23 +176,67 @@ public class RedSystem {
         while (it.hasNext()) {
             Vertex aux = it.next();
             if (!comunidad.contains(aux)) {
-                if (aux.getAdjacents().contains(comunidad)) {
+                if (contieneNodo(aux, comunidad)) { 
                     comunidadesPersona(aux, comunidad, comunidades);
-                } else {
-                    if (comunidad.size() > 2) {
-                        Iterator<Vertex> itConvertir = comunidad.iterator();
-                        LinkedList<Person> personas = new LinkedList<>();
-                        while (it.hasNext()) {
-                            personas.add((Person) it.next().getInfo());
-                        }
-                        Comunity comun = new Comunity(personas.size(), personas);
-                        if (!comunidades.contains(comun))
-                            comunidades.add(comun);
+                } else if (comunidad.size() > 2) {
+                    Iterator<Vertex> itConvertir = comunidad.iterator();
+                    LinkedList<Person> personas = new LinkedList<>();
+                    while (itConvertir.hasNext()) {
+                        Person person= (Person)itConvertir.next().getInfo();
+                        personas.add(person);
                     }
+                    Comunity comun = new Comunity(personas.size(), personas);
+                    if (containsComunity(comun, comunidades))
+                        comunidades.add(comun);
                 }
+
+            } else if (comunidad.size() > 2 && (comunidad.size() - 1) == (actual.getAdjacents().size())) {
+                Iterator<Vertex> itConvertir = comunidad.iterator();
+                LinkedList<Person> personas = new LinkedList<>();
+                while (itConvertir.hasNext()) {
+                    Person a = (Person) itConvertir.next().getInfo();
+                    personas.add(a);
+                }
+                Comunity comun = new Comunity(personas.size(), personas);
+                if (containsComunity(comun,comunidades))
+                    comunidades.add(comun);
             }
         }
         comunidad.remove(actual);
+    }
+
+    private boolean contieneNodo(Vertex actual, LinkedList<Vertex> comunidad) {
+        boolean contine = true;
+        Iterator<Vertex> it = comunidad.iterator();
+        while (contine && it.hasNext()) {
+            Vertex vertex = it.next();
+            if (!actual.getAdjacents().contains(vertex)) {
+                contine = false;
+            }
+        }
+        return contine;
+    }
+
+    private boolean containsComunity(Comunity comunidad, LinkedList<Comunity> listaComunidades) {
+       int contador=0;
+        boolean Nocontiene = true;
+        Iterator<Comunity> itListaCominudades = listaComunidades.iterator();
+        while (itListaCominudades.hasNext() && Nocontiene) {
+            Comunity aux = itListaCominudades.next();
+            if (aux.getCantdintegrantes() == comunidad.getCantdintegrantes()) {
+                Iterator<Person> itPersonas = comunidad.getIntegrantes().iterator();
+                while (itPersonas.hasNext() && Nocontiene) {
+                    Person p= itPersonas.next(); 
+                    if (aux.getIntegrantes().contains(p)) {
+                        contador++;
+                    }
+                }
+            }
+            if(contador == comunidad.getCantdintegrantes())
+            Nocontiene = false;
+        }
+
+        return Nocontiene;
     }
 //Metodos para obtener los lideres de investigacion (no comprobado)
     public LinkedList<Person> lideresInvest (LinkedList <Comunity> comunidades, List <Float> promedios){

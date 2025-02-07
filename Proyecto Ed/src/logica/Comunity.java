@@ -21,4 +21,7 @@ public class Comunity {
      public LinkedList <Person> getIntegrantes() {
         return integrantes;
      }
+     public int getCantdintegrantes() {
+        return cantdIntegrantes;
+     }
 }
