@@ -27,31 +27,34 @@ public class MainPrueba2 {
 		sis.setGraph(grafo);
 		boolean crearSolicitud= sis.crearSolicitud(((Person)sis.getGraph().getVerticesList().get(0).getInfo()),((Person)sis.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud1= sis.crearSolicitud(((Person)sis.getGraph().getVerticesList().get(1).getInfo()),((Person)sis.getGraph().getVerticesList().get(2).getInfo()), 9);
-		boolean crearSolicitud2= sis.crearSolicitud(((Person)sis.getGraph().getVerticesList().get(3).getInfo()),((Person)sis.getGraph().getVerticesList().get(1).getInfo()), 9);
+		boolean crearSolicitud2= sis.crearSolicitud(((Person)sis.getGraph().getVerticesList().get(0).getInfo()),((Person)sis.getGraph().getVerticesList().get(1).getInfo()), 9);
 		System.out.println("Solicitud creada(Samira manda solicitad a adrian: )"+crearSolicitud);
 		System.out.println("Solicitud creada(Marlon manda solicitad a Adrian: )"+crearSolicitud1);
-		System.out.println("Solicitud aceptada(Adrian acepta solicitud de Samaira: "+sis.crearNuevaRelacion(num1.getNick(), num3));
+		System.out.println("Solicitud aceptada(Adrian acepta solicitud de Samira: "+sis.crearNuevaRelacion(num1.getNick(), num3));
 		sis.crearNuevaRelacion(num2.getNick(), num3);
+		sis.crearNuevaRelacion(num1.getNick(), num2);
 		sis.crearNuevaRelacion(num4.getNick(), num2);
 
 		LinkedList <Person> islas = sis.personasSinConexiones();
-		Iterator<Person> iter = islas.iterator();
-		while(iter.hasNext()) {
-			Person aux = iter.next();
-			System.out.println("Es una isla: "+aux.getNick() + "," + aux.getOccupation());
-		}	
+            for (Person aux : islas) {
+                System.out.println("Es una isla: "+aux.getNick() + "," + aux.getOccupation());
+            }	
 		System.out.println("Adrian es una isla:"+sis.isIsland("Adrian"));
 		
 		
 		
-		GeneralTree <Person> arbol=sis.obtenerTodasconexiones(((Person)sis.getGraph().getVerticesList().get(2).getInfo())) ;
+	    GeneralTree <Person> arbol=sis.obtenerTodasconexiones(((Person)sis.getGraph().getVerticesList().get(2).getInfo())) ;
 		InBreadthIterator<Person> a= arbol.inBreadthIterator();
 		while(a.hasNext()) {
 			Person aux = a.next();
 			System.out.println(aux.getNick());
-		}	
-
-		
+		} 
+		LinkedList<Comunity> comun = sis.obtenerComunidades();
+		for(Comunity abc: comun ){
+		 for(Person persona: abc.getIntegrantes()){
+		  System.out.println(persona.getNick());
+		 }
+		}
 
 	}
 }

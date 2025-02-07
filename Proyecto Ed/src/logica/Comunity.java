@@ -11,11 +11,14 @@ public class Comunity {
         setIntegrantes(integrantes);
     }
         
-    private void setCantdintegrantes(int cantdIntegrantes) {
+    public void setCantdintegrantes(int cantdIntegrantes) {
          this.cantdIntegrantes= cantdIntegrantes;
     }
     
-    private void setIntegrantes(LinkedList <Person> integrantes) {
+    public void setIntegrantes(LinkedList <Person> integrantes) {
         this.integrantes= integrantes;
+     }
+     public LinkedList <Person> getIntegrantes() {
+        return integrantes;
      }
 }

@@ -3,7 +3,11 @@ package logica;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
+
 import cu.edu.cujae.ceis.graph.LinkedGraph;
+import cu.edu.cujae.ceis.graph.edge.Edge;
+import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
@@ -191,6 +195,39 @@ public class RedSystem {
             }
         }
         comunidad.remove(actual);
+    }
+//Metodos para obtener los lideres de investigacion (no comprobado)
+    public LinkedList<Person> lideresInvest (LinkedList <Comunity> comunidades, List <Float> promedios){
+        LinkedList<Person> list = new LinkedList <Person>();
+        float mayor =0;
+        float current = 0;
+        for(Comunity c : comunidades){
+            for(Person p : c.getIntegrantes()){
+               current = calcularPromedio(p.getNick());
+               if(current > mayor){
+                 list.clear();
+                 promedios.clear();
+                 mayor = current;
+                 list.add(p);
+                 promedios.add(mayor);
+               }
+               else if(current == mayor){
+                list.add(p);
+                promedios.add(mayor);
+               }
+            }
+        }
+        return list;
+    }
+    private float calcularPromedio(String nick){
+        float promedio= 0;
+        Vertex a = findNick(nick);
+        for(Edge ed: a.getEdgeList()){
+            WeightedEdge we = (WeightedEdge)ed;
+            promedio += (Float)we.getWeight();
+        }
+        promedio /= a.getEdgeList().size();
+        return promedio;
     }
 
 }
