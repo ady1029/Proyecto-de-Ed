@@ -1,7 +1,9 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
@@ -28,12 +30,16 @@ public class MainPrueba2 {
 		boolean crearSolicitud1 = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(1).getInfo()),((Person) sis.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud2 = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(1).getInfo()), 9);
 		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
+		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(1).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
+		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(2).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
 		System.out.println("Solicitud creada(Samira manda solicitad a adrian: )" + crearSolicitud);
 		System.out.println("Solicitud creada(Marlon manda solicitad a Adrian: )" + crearSolicitud1);
 		System.out.println("Solicitud aceptada(Adrian acepta solicitud de Samaira: "+ sis.crearNuevaRelacion(num1.getNick(), num3));
 		sis.crearNuevaRelacion(num2.getNick(), num3);
 		sis.crearNuevaRelacion(num1.getNick(), num2);
 		sis.crearNuevaRelacion(num1.getNick(), num4);
+		sis.crearNuevaRelacion(num2.getNick(), num4);
+		sis.crearNuevaRelacion(num3.getNick(), num4);
 
 		LinkedList<Person> islas = sis.personasSinConexiones();
 		Iterator<Person> iter = islas.iterator();
@@ -58,5 +64,14 @@ public class MainPrueba2 {
 				System.out.println(person.getNick());
 			i++;
 		}
+
+
+		ArrayList <Float> promedios= new ArrayList<>();
+		LinkedList <Person> lideresInvestigacion= sis.lideresInvest(comu, promedios);
+		System.out.println("Lideres de investigacion");
+		for(int j=0; j< lideresInvestigacion.size(); j++){
+			System.out.println(lideresInvestigacion.get(j).getNick()+ "------"+ promedios.get(j));
+		}
+
 	}
 }

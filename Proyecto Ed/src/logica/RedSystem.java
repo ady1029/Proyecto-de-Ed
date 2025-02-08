@@ -1,9 +1,8 @@
 package logica;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
-
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
@@ -176,13 +175,13 @@ public class RedSystem {
         while (it.hasNext()) {
             Vertex aux = it.next();
             if (!comunidad.contains(aux)) {
-                if (contieneNodo(aux, comunidad)) { 
+                if (contieneNodo(aux, comunidad)) {
                     comunidadesPersona(aux, comunidad, comunidades);
                 } else if (comunidad.size() > 2) {
                     Iterator<Vertex> itConvertir = comunidad.iterator();
                     LinkedList<Person> personas = new LinkedList<>();
                     while (itConvertir.hasNext()) {
-                        Person person= (Person)itConvertir.next().getInfo();
+                        Person person = (Person) itConvertir.next().getInfo();
                         personas.add(person);
                     }
                     Comunity comun = new Comunity(personas.size(), personas);
@@ -198,7 +197,7 @@ public class RedSystem {
                     personas.add(a);
                 }
                 Comunity comun = new Comunity(personas.size(), personas);
-                if (containsComunity(comun,comunidades))
+                if (containsComunity(comun, comunidades))
                     comunidades.add(comun);
             }
         }
@@ -218,7 +217,7 @@ public class RedSystem {
     }
 
     private boolean containsComunity(Comunity comunidad, LinkedList<Comunity> listaComunidades) {
-       int contador=0;
+        int contador = 0;
         boolean Nocontiene = true;
         Iterator<Comunity> itListaCominudades = listaComunidades.iterator();
         while (itListaCominudades.hasNext() && Nocontiene) {
@@ -226,47 +225,50 @@ public class RedSystem {
             if (aux.getCantdintegrantes() == comunidad.getCantdintegrantes()) {
                 Iterator<Person> itPersonas = comunidad.getIntegrantes().iterator();
                 while (itPersonas.hasNext() && Nocontiene) {
-                    Person p= itPersonas.next(); 
+                    Person p = itPersonas.next();
                     if (aux.getIntegrantes().contains(p)) {
                         contador++;
                     }
                 }
+                if (contador == comunidad.getCantdintegrantes())
+                    Nocontiene = false;
             }
-            if(contador == comunidad.getCantdintegrantes())
-            Nocontiene = false;
+
         }
 
         return Nocontiene;
     }
-//Metodos para obtener los lideres de investigacion (no comprobado)
-    public LinkedList<Person> lideresInvest (LinkedList <Comunity> comunidades, List <Float> promedios){
-        LinkedList<Person> list = new LinkedList <Person>();
-        float mayor =0;
-        float current = 0;
-        for(Comunity c : comunidades){
-            for(Person p : c.getIntegrantes()){
-               current = calcularPromedio(p.getNick());
-               if(current > mayor){
-                 list.clear();
-                 promedios.clear();
-                 mayor = current;
-                 list.add(p);
-                 promedios.add(mayor);
-               }
-               else if(current == mayor){
-                list.add(p);
-                promedios.add(mayor);
-               }
+
+    // Metodos para obtener los lideres de investigacion (no comprobado)
+    public LinkedList<Person> lideresInvest(LinkedList<Comunity> comunidades, ArrayList<Float> promedios) {
+        LinkedList<Person> list = new LinkedList<Person>();
+
+        for (Comunity c : comunidades) {
+            float mayor = 0;
+            float current = 0;
+            for (Person p : c.getIntegrantes()) {
+                current = calcularPromedio(p.getNick());
+                if (current > mayor) {
+                    list.clear();
+                    promedios.clear();
+                    mayor = current;
+                    list.add(p);
+                    promedios.add(mayor);
+                } else if (current == mayor) {
+                    list.add(p);
+                    promedios.add(mayor);
+                }
             }
         }
         return list;
     }
-    private float calcularPromedio(String nick){
-        float promedio= 0;
+
+    private float calcularPromedio(String nick) {
+        float promedio = 0;
         Vertex a = findNick(nick);
-        for(Edge ed: a.getEdgeList()){
-            WeightedEdge we = (WeightedEdge)ed;
-            promedio += (Float)we.getWeight();
+        for (Edge ed : a.getEdgeList()) {
+            WeightedEdge we = (WeightedEdge) ed;
+            promedio += (Integer) we.getWeight();
         }
         promedio /= a.getEdgeList().size();
         return promedio;
