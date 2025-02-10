@@ -107,7 +107,7 @@ public class login extends JFrame {
 				Person p= new Person();
 				int counter=2;
 				p=acceder(p);
-				try{
+				/*try{
 					if(accederMP()== true){
 						MenuPrinc frame = new MenuPrinc(fct);
 						frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -130,7 +130,7 @@ public class login extends JFrame {
 					
 					e.printStackTrace();
 
-				}
+				}*/
 			}
 		});
 		btnmcnAcceder.setBounds(213, 555, 159, 48);
@@ -168,9 +168,9 @@ public class login extends JFrame {
 				 
 				}
 			}
-		}
 		return p;
-	}
+		}
+		
 	public boolean accederMP(){
 		boolean acceder = false;
 		String a = "0123456789";
