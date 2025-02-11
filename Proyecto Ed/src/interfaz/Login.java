@@ -22,7 +22,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 
-public class LogIn extends JFrame {
+public class Login extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -43,7 +43,7 @@ public class LogIn extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LogIn frame = new LogIn();
+					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -55,7 +55,7 @@ public class LogIn extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public LogIn() {
+	public Login() {
 		setResizable(false);
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -125,7 +125,7 @@ public class LogIn extends JFrame {
 		panel_1.add(btnRegistrarse);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(LogIn.class.getResource("/fotos/✅.png")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/fotos/✅.png")));
 		lblNewLabel.setBounds(0, 0, 1269, 683);
 		panel_1.add(lblNewLabel);
 	}
