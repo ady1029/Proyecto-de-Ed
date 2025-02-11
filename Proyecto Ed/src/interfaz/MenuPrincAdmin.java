@@ -18,13 +18,18 @@ import javax.swing.ImageIcon;
 import java.awt.Canvas;
 import componentesVisuales.AvatarCircular;
 import componentesVisuales.PanelAnimacionCurvas;
+import logica.RedSystem;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Cursor;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuPrincAdmin extends JFrame {
 
+	private RedSystem sistema;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JMenuItem mntmMatrizAdjacencia;
@@ -102,6 +107,22 @@ public class MenuPrincAdmin extends JFrame {
 		
 		JMenu mnBuscar = new JMenu("Buscar");
 		menuBar.add(mnBuscar);
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Buscar Usuario");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
+		mnBuscar.add(mntmNewMenuItem_7);
 		
 		JMenu mnNewMenu_2 = new JMenu("Ajuste");
 		menuBar.add(mnNewMenu_2);
