@@ -136,13 +136,10 @@ public class Login extends JFrame {
 		panel_1.add(btnRegistrarse);
 
 		JLabel lblNewLabel = new JLabel("New label");
-<<<<<<< Updated upstream:Proyecto Ed/src/interfaz/Login.java
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/fotos/✅.png")));
 		lblNewLabel.setBounds(0, 0, 1269, 683);
-=======
-		lblNewLabel.setIcon(new ImageIcon(LogIn.class.getResource("/fotos/✅.png")));
+		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/fotos/✅.png")));
 		lblNewLabel.setBounds(0, 0, 1167, 683);
->>>>>>> Stashed changes:Proyecto Ed/src/interfaz/login.java
 		panel_1.add(lblNewLabel);
 	}
 }

@@ -35,27 +35,11 @@ public class MenuPrincAdmin extends JFrame {
 	private JMenuItem mntmMatrizAdjacencia;
 	private JMenuItem mntmListadoRelaciones;
 	private JMenu mnNewMenu_3;
+	private RedSystem system;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MenuPrincAdmin frame = new MenuPrincAdmin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
-	public MenuPrincAdmin() {
+	
+	public MenuPrincAdmin(RedSystem sistema) {
+		system= sistema;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 753, 528);
 		this.setLocationRelativeTo(null);
@@ -74,7 +58,20 @@ public class MenuPrincAdmin extends JFrame {
 		mnNewMenu_3 = new JMenu("Relaciones entre Usuarios ");
 		mnNewMenu.add(mnNewMenu_3);
 		
-		mntmMatrizAdjacencia = new JMenuItem("Matriz de adjacencia ");
+		mntmMatrizAdjacencia = new JMenuItem("Matriz de Adyacencia ");
+		mntmMatrizAdjacencia.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostrarMatrizAdjacencia dialog = new MostrarMatrizAdjacencia(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		mnNewMenu_3.add(mntmMatrizAdjacencia);
 		
 		mntmListadoRelaciones = new JMenuItem("Listado de Ralciones ");
@@ -87,7 +84,7 @@ public class MenuPrincAdmin extends JFrame {
 		JMenu mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Obtener Relaciones de un Usuario");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Relaciones de un usuario en en una estructura");
 		mnReportes.add(mntmNewMenuItem);
 		
 		JMenu mnNewMenu_1 = new JMenu("Obtener Usuarios Islas");
@@ -164,6 +161,20 @@ public class MenuPrincAdmin extends JFrame {
 		panelAnimacionCurvas.add(avatarCircular_1);
 		
 		JLabel lblRelacionEntreUsuarios = new JLabel("Relacion entre Usuarios");
+		lblRelacionEntreUsuarios.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					MostrarMatrizAdjacencia dialog = new MostrarMatrizAdjacencia(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+
+			}
+		});
 		lblRelacionEntreUsuarios.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblRelacionEntreUsuarios.setForeground(Color.BLACK);
 		lblRelacionEntreUsuarios.setFont(new Font("Arial Black", Font.PLAIN, 12));
@@ -206,6 +217,27 @@ public class MenuPrincAdmin extends JFrame {
 		lblLderesDeInvestigacin.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		lblLderesDeInvestigacin.setBounds(292, 345, 176, 14);
 		panelAnimacionCurvas.add(lblLderesDeInvestigacin);
+		
+		JLabel lblmatrizDeAdyacencia = new JLabel("(Matriz de Adyacencia)");
+		lblmatrizDeAdyacencia.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					MostrarMatrizAdjacencia dialog = new MostrarMatrizAdjacencia(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		lblmatrizDeAdyacencia.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblmatrizDeAdyacencia.setHorizontalAlignment(SwingConstants.CENTER);
+		lblmatrizDeAdyacencia.setForeground(Color.BLACK);
+		lblmatrizDeAdyacencia.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		lblmatrizDeAdyacencia.setBounds(36, 359, 162, 14);
+		panelAnimacionCurvas.add(lblmatrizDeAdyacencia);
 	}
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {
