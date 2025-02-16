@@ -10,6 +10,7 @@ import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
+import interfaz.Login;
 import interfaz.MenuPrincAdmin;
 
 public class MainPrueba2 {
@@ -76,7 +77,8 @@ public class MainPrueba2 {
 			System.out.println(lideresInvestigacion.get(j).getNick()+ "------"+ promedios.get(j));
 		}
 		try {
-			MenuPrincAdmin frame = new MenuPrincAdmin(sis);
+			Login login = new Login();
+			MenuPrincAdmin frame = new MenuPrincAdmin(sis,login);
 			frame.setVisible(true);
 		} catch (Exception e) {
 			e.printStackTrace();

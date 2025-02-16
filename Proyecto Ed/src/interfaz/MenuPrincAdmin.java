@@ -36,9 +36,11 @@ public class MenuPrincAdmin extends JFrame {
 	private JMenuItem mntmListadoRelaciones;
 	private JMenu mnNewMenu_3;
 	private RedSystem system;
+	private Login father;
 
 	
-	public MenuPrincAdmin(RedSystem sistema) {
+	public MenuPrincAdmin(RedSystem sistema, Login login) {
+		father= login;
 		system= sistema;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 753, 528);
@@ -52,6 +54,18 @@ public class MenuPrincAdmin extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmListadoUsuarios = new JMenuItem("Listado de Usarios");
+		mntmListadoUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostarListadoUsarios dialog = new MostarListadoUsarios(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mntmListadoUsuarios.setHorizontalAlignment(SwingConstants.CENTER);
 		mnNewMenu.add(mntmListadoUsuarios);
 		
@@ -77,7 +91,13 @@ public class MenuPrincAdmin extends JFrame {
 		mntmListadoRelaciones = new JMenuItem("Listado de Ralciones ");
 		mnNewMenu_3.add(mntmListadoRelaciones);
 		
-		JMenuItem Exit = new JMenuItem("Exit");
+		JMenuItem Exit = new JMenuItem("Cerrar Sesión");
+		Exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				father.setVisible(true);
+				dispose();
+			}
+		});
 		Exit.setHorizontalAlignment(SwingConstants.CENTER);
 		mnNewMenu.add(Exit);
 		
@@ -91,9 +111,33 @@ public class MenuPrincAdmin extends JFrame {
 		mnReportes.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Dado un usario");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Todos los Usuarios Islas ");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostarUsuariosIslas dialog = new (MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Obtener Comunidades");
@@ -149,6 +193,19 @@ public class MenuPrincAdmin extends JFrame {
 		panelAnimacionCurvas.add(avatarCircular);
 		
 		JLabel lblNewLabel = new JLabel("Listado de Usuarios");
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					MostarListadoUsarios dialog = new MostarListadoUsarios(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel.setForeground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Arial Black", Font.PLAIN, 12));
@@ -187,6 +244,13 @@ public class MenuPrincAdmin extends JFrame {
 		panelAnimacionCurvas.add(avatarCircular_2);
 		
 		JLabel lblCerrarSesin = new JLabel("Cerrar Sesión");
+		lblCerrarSesin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				father.setVisible(true);
+				dispose();
+			}
+		});
 		lblCerrarSesin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblCerrarSesin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblCerrarSesin.setForeground(Color.BLACK);
@@ -236,24 +300,7 @@ public class MenuPrincAdmin extends JFrame {
 		lblmatrizDeAdyacencia.setHorizontalAlignment(SwingConstants.CENTER);
 		lblmatrizDeAdyacencia.setForeground(Color.BLACK);
 		lblmatrizDeAdyacencia.setFont(new Font("Arial Black", Font.PLAIN, 12));
-		lblmatrizDeAdyacencia.setBounds(36, 359, 162, 14);
+		lblmatrizDeAdyacencia.setBounds(34, 359, 162, 14);
 		panelAnimacionCurvas.add(lblmatrizDeAdyacencia);
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
-			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
-				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
-			}
-		});
 	}
 }
