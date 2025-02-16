@@ -6,15 +6,32 @@
   <component name="ChangeListManager">
     <list default="true" id="3f648b99-121c-434f-ae98-98ec3189915e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/Proyecto Ed/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/.project" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/.project" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Proyecto Ed/.settings/org.eclipse.jdt.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/.settings/org.eclipse.jdt.core.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/interfaz/SolicitudesAmistad$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/interfaz/SolicitudesAmistad$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/interfaz/SolicitudesAmistad.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/interfaz/SolicitudesAmistad.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Comunity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Comunity.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Countries.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Countries.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/MainPrueba2.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/MainPrueba2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/.vscode/settings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Person.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/RedSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/RedSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/bin/logica/Request.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/build.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/build.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/fondo 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/fondo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/fondo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/fondo4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/icon hombre 1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/login (1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/imagenes/login (2).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/interfaz/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/interfaz/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/interfaz/inicio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/interfaz/inicio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/Comunity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/Comunity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/Countries.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/Countries.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/MainPrueba2.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/MainPrueba2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/RedSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/RedSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Proyecto Ed/src/logica/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/Proyecto Ed/src/logica/Request.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,21 +49,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Unnamed.executor": "Run",
-    "JAR Application.Unnamed.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/rodri/Documents/GitHub/Proyecto-de-Ed",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;JAR Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/rodri/Documents/GitHub/Proyecto-de-Ed&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="Unnamed" type="JarApplication" nameIsGenerated="true">
       <option name="WORKING_DIRECTORY" value="C:\Users\rodri\Documents\GitHub\Proyecto-de-Ed" />
       <option name="ALTERNATIVE_JRE_PATH" />

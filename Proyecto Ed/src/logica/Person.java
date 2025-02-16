@@ -18,6 +18,9 @@ public class Person {
 		setOccupation(occupation);
 		solicitudAmistad= new LinkedList<Request>();
 	}
+	public Person() {
+		
+	}
 
 	public String getNick() {
 		return nick;

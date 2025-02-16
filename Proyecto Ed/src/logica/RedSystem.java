@@ -14,6 +14,7 @@ import cu.edu.cujae.ceis.tree.general.GeneralTree;
 public class RedSystem {
     private String name;
     private ILinkedWeightedEdgeNotDirectedGraph graph;
+    private Person adm;
 
     public RedSystem(String name) {
         this.name = name;
@@ -35,6 +36,13 @@ public class RedSystem {
     public void setGraph(ILinkedWeightedEdgeNotDirectedGraph graph) {
         this.graph = graph;
     }
+	public Person getAdm() {
+		return adm;
+	}
+
+	public void setAdm(Person adm) {
+		this.adm = adm;
+	}
 
     public boolean login(String nick, String password) {
         boolean correcto = false;
@@ -273,5 +281,7 @@ public class RedSystem {
         promedio /= a.getEdgeList().size();
         return promedio;
     }
+
+
 
 }

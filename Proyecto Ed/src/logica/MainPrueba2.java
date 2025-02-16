@@ -7,8 +7,10 @@ import java.util.List;
 
 import cu.edu.cujae.ceis.graph.LinkedGraph;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
+import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
+import interfaz.MenuPrincAdmin;
 
 public class MainPrueba2 {
 
@@ -20,10 +22,12 @@ public class MainPrueba2 {
 		Person num2 = new Person("Marlon", "aaa", "Cuba", "Programador");
 		Person num3 = new Person("Adrian", "soy tonto", "Cuba", "Programador");
 		Person num4 = new Person("Migue", "soy negro", "Cuba", "Negro");
+		Person num5 = new Person("Jorge", "1234", "Cuba", "Ingeniero");
 		grafo.insertVertex(num1);
 		grafo.insertVertex(num2);
 		grafo.insertVertex(num3);
 		grafo.insertVertex(num4);
+		grafo.insertVertex(num5);
 
 		sis.setGraph(grafo);
 		boolean crearSolicitud = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(2).getInfo()), 9);
@@ -49,8 +53,7 @@ public class MainPrueba2 {
 		}
 		System.out.println("Adrian es una isla:" + sis.isIsland("Adrian"));
 
-		GeneralTree<Person> arbol = sis
-				.obtenerTodasconexiones(((Person) sis.getGraph().getVerticesList().get(2).getInfo()));
+		GeneralTree<Person> arbol = sis.obtenerTodasconexiones(((Person) sis.getGraph().getVerticesList().get(2).getInfo()));
 		InBreadthIterator<Person> a = arbol.inBreadthIterator();
 		while (a.hasNext()) {
 			Person aux = a.next();
@@ -72,6 +75,12 @@ public class MainPrueba2 {
 		for(int j=0; j< lideresInvestigacion.size(); j++){
 			System.out.println(lideresInvestigacion.get(j).getNick()+ "------"+ promedios.get(j));
 		}
-
+		try {
+			MenuPrincAdmin frame = new MenuPrincAdmin(sis);
+			frame.setVisible(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }
