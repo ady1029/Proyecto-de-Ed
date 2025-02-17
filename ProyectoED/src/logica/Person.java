@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Person {
-	private String nick;
+	public String nick;
 	private String password;
 	private Pais country;
 	private String occupation;
