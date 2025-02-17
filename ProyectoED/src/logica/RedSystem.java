@@ -240,8 +240,8 @@ public class RedSystem {
     }
 
     // Metodos para obtener los lideres de investigacion (no comprobado)
-    public LinkedList<Person> lideresInvest(LinkedList<Comunity> comunidades, ArrayList<Float> promedios) {
-        LinkedList<Person> list = new LinkedList<Person>();
+    public LinkedList<LiderInvestigacion> lideresInvest(LinkedList<Comunity> comunidades) {
+        LinkedList<LiderInvestigacion> list = new LinkedList<>();
 
         for (Comunity c : comunidades) {
             float mayor = 0;
@@ -250,13 +250,10 @@ public class RedSystem {
                 current = calcularPromedio(p.getNick());
                 if (current > mayor) {
                     list.clear();
-                    promedios.clear();
                     mayor = current;
-                    list.add(p);
-                    promedios.add(mayor);
+                    list.add(new LiderInvestigacion(p.getNick(), c.getCantdintegrantes(),mayor));
                 } else if (current == mayor) {
-                    list.add(p);
-                    promedios.add(mayor);
+                    list.add(new LiderInvestigacion(p.getNick(), c.getCantdintegrantes(),mayor));
                 }
             }
         }

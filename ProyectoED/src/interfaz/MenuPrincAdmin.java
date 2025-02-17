@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
 import java.awt.Canvas;
 import componentesVisuales.AvatarCircular;
 import componentesVisuales.PanelAnimacionCurvas;
+import logica.LiderInvestigacion;
 import logica.RedSystem;
 
 import java.awt.Color;
@@ -168,6 +169,18 @@ public class MenuPrincAdmin extends JFrame {
 		mnReportes.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Obtener Usuarios Líderes de Investigación ");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostrarLideresInvestigacion dialog = new MostrarLideresInvestigacion(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnReportes.add(mntmNewMenuItem_4);
 		
 		JMenu mnBuscar = new JMenu("Buscar");
@@ -300,6 +313,19 @@ public class MenuPrincAdmin extends JFrame {
 		panelAnimacionCurvas.add(lblAjustesDeLa);
 		
 		JLabel lblLderesDeInvestigacin = new JLabel("Líderes de investigación");
+		lblLderesDeInvestigacin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					MostrarLideresInvestigacion dialog = new MostrarLideresInvestigacion(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		lblLderesDeInvestigacin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblLderesDeInvestigacin.setForeground(Color.BLACK);
 		lblLderesDeInvestigacin.setFont(new Font("Arial Black", Font.PLAIN, 12));

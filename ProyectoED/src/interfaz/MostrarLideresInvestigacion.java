@@ -19,6 +19,7 @@ import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
 import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
 import logica.Comunity;
+import logica.LiderInvestigacion;
 import logica.Person;
 import logica.RedSystem;
 import componentesVisuales.PanelBordeOval;
@@ -35,7 +36,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 
-public class MostrarComunidades extends JDialog implements Serializable{
+public class MostrarLideresInvestigacion extends JDialog implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
@@ -43,7 +44,7 @@ public class MostrarComunidades extends JDialog implements Serializable{
 	private JTable table;
 	private GeneralTree<Person> arbol;
 
-	public MostrarComunidades(MenuPrincAdmin father,RedSystem system) {
+	public MostrarLideresInvestigacion(MenuPrincAdmin father,RedSystem system) {
 		super(father, true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -66,7 +67,7 @@ public class MostrarComunidades extends JDialog implements Serializable{
 				new Object[][] {
 				},
 				new String[] {
-						"Comunidades", "Usuario"
+						"Nombre", "Tamaño de la comunidad","Promedio"
 				}
 				));
 		scrollPane.setViewportView(table);
@@ -98,11 +99,11 @@ public class MostrarComunidades extends JDialog implements Serializable{
 		panel.add(btnmcnAtrs);
 
 		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setAvatar(new ImageIcon(MostrarLideresInvestigacion.class.getResource("/fotos/LogoConeccionPersonas.png")));
+		avatarCircular.setAvatar(new ImageIcon(MostrarLideresInvestigacion.class.getResource("/fotos/LideresInvestigacion.jpg")));
 		avatarCircular.setBounds(21, 11, 56, 49);
 		panel.add(avatarCircular);
 
-		JLabel lblNewLabel = new JLabel("Comunidades ");
+		JLabel lblNewLabel = new JLabel("Líderes de Investigación");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 19));
 		lblNewLabel.setBounds(79, 20, 479, 32);
 		panel.add(lblNewLabel);
@@ -111,25 +112,20 @@ public class MostrarComunidades extends JDialog implements Serializable{
 	}
 	private void llenarTabla() {
 		LinkedList<Comunity> comunidades= sistema.obtenerComunidades();
-		int total=0;
-		for(Comunity comunidad: comunidades) {
-			total+=comunidad.getCantdintegrantes();
-		}
-		DefaultTableModel modelodefault= new DefaultTableModel(new String[] {"Comunidades", "Usuario"},total){
+		LinkedList<LiderInvestigacion> lideresInvestigacion= sistema.lideresInvest(comunidades);		
+		DefaultTableModel modelodefault= new DefaultTableModel(new String[] {"Nombre", "Tamaño de la comunidad","Promedio"},lideresInvestigacion.size()){
 			public boolean isCellEditable(int row, int column) {return false;}};
-			table.setModel(modelodefault);
-			TableModel modeloDatos= table.getModel();
-			int i= 1;
-			int j=0;
-			for(Comunity aux: comunidades) {
-				modeloDatos.setValueAt("Comunidad "+i, j,0);
-				Iterator<Person> it= aux.getIntegrantes().iterator();
-				while(it.hasNext()){
-					Person actual= it.next();
-					modeloDatos.setValueAt(actual.getNick(), j,1);
-					j++;
-				}
-				i++;
-			}
+		table.setModel(modelodefault);
+		TableModel modeloDatos= table.getModel();
+		Iterator<LiderInvestigacion> it= lideresInvestigacion.iterator();
+		int i= 0;
+		while(it.hasNext()){
+			LiderInvestigacion aux= it.next();
+			modeloDatos.setValueAt(aux.getNick(), i,0);
+			modeloDatos.setValueAt(aux.getTamañoComunidad(), i,1);
+			modeloDatos.setValueAt(aux.getPromedio(), i,2);
+			i++;
+		}
+
 	}
 }
