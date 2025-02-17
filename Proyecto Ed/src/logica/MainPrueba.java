@@ -71,7 +71,7 @@ public class MainPrueba {
 
 
 		ArrayList <Float> promedios= new ArrayList<>();
-		LinkedList <Person> lideresInvestigacion= sis.lideresInvest(comu, promedios);
+LinkedList<LiderInvestigacion> lideresInvestigacion= sis.lideresInvest(comu);
 		System.out.println("Lideres de investigacion");
 		for(int j=0; j< lideresInvestigacion.size(); j++){
 			System.out.println(lideresInvestigacion.get(j).getNick()+ "------"+ promedios.get(j));

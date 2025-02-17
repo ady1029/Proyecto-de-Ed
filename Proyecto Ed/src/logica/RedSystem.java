@@ -20,6 +20,7 @@ public class RedSystem {
     public RedSystem(String name) {
         this.name = name;
         this.graph = new LinkedGraph();
+        administrador= new Person("Administrador","12345",null,null);
     }
 
     public String getName() {

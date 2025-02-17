@@ -1,6 +1,5 @@
 package interfaz;
 
-<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,9 +29,21 @@ import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+
+
+
+
 
 public class Login extends JFrame {
-
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private PanelBordeOval panelInicioSeccion;
@@ -45,33 +56,14 @@ public class Login extends JFrame {
 	private BotonAnimacion btnAccederLogin;
 	private BotonAnimacion btnRegistrarse;
 	private static RedSystem app;
-=======
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 
-public class Login extends JFrame {
-
-	private JPanel contentPane;
-
->>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 					app = new RedSystem("WorkSphere");
 					inicializarDatos(app);
-=======
->>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
 					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -79,13 +71,10 @@ public class Login extends JFrame {
 				}
 			}
 		});
-	}
+}	
 
-	/**
-	 * Create the frame.
-	 */
+
 	public Login() {
-<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 		setResizable(false);
 		setTitle("WorkSphere");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,7 +130,7 @@ public class Login extends JFrame {
 		passwordField.setBackground(Color.WHITE);
 		passwordField.setBounds(37, 262, 273, 35);
 		panelInicioSeccion.add(passwordField);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setForeground(new Color(255, 0, 0));
 		lblNewLabel_3.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
@@ -194,6 +183,7 @@ public class Login extends JFrame {
 				dispose();
 			}
 		});
+		
 		btnRegistrarse.setText("CREAR CUENTA");
 		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 25));
 		btnRegistrarse.setColorEfecto(Color.WHITE);
@@ -208,6 +198,7 @@ public class Login extends JFrame {
 		lblNewLabel.setBounds(0, 0, 1167, 683);
 		panel_1.add(lblNewLabel);
 	}
+	
 	public static void inicializarDatos(RedSystem app) {
 		ILinkedWeightedEdgeNotDirectedGraph grafo = new LinkedGraph();
 		Person num1 = new Person("Samira", "1234", Pais.CUBA, "Programadora");
@@ -222,7 +213,7 @@ public class Login extends JFrame {
 		grafo.insertVertex(num5);
 		app.setGraph(grafo);
 		app.setAdministrador(new Person("Administrador", "111", Pais.CUBA, "Administrador"));
-		
+
 		boolean crearSolicitud = app.crearSolicitud(((Person) app.getGraph().getVerticesList().get(0).getInfo()),((Person) app.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud1 = app.crearSolicitud(((Person) app.getGraph().getVerticesList().get(1).getInfo()),((Person) app.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud2 = app.crearSolicitud(((Person) app.getGraph().getVerticesList().get(0).getInfo()),((Person) app.getGraph().getVerticesList().get(1).getInfo()), 9);
@@ -238,6 +229,7 @@ public class Login extends JFrame {
 		app.crearNuevaRelacion(num2.getNick(), num4);
 		app.crearNuevaRelacion(num3.getNick(), num4);
 	}
+	
 	private boolean accederAdm() {
 		boolean correcto = false;
 		char [] password= passwordField.getPassword();
@@ -247,14 +239,6 @@ public class Login extends JFrame {
 		}
 		return correcto;
 	}
-=======
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 777, 861);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-	}
-
->>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
+	
 }
+
