@@ -27,14 +27,14 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MostarListadoUsarios extends JDialog {
+public class MostrarUsuariosIslas extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private RedSystem sistema;
 	private JTable table;
 
-	public MostarListadoUsarios(MenuPrincAdmin father,RedSystem system) {
+	public MostrarUsuariosIslas(MenuPrincAdmin father,RedSystem system) {
 		super(father, true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -88,11 +88,11 @@ public class MostarListadoUsarios extends JDialog {
 		panel.add(btnmcnAtrs);
 
 		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setAvatar(new ImageIcon(MostarListadoUsarios.class.getResource("/fotos/FotoUsuarios.png")));
+		avatarCircular.setAvatar(new ImageIcon(MostrarUsuariosIslas.class.getResource("/fotos/Imagen de WhatsApp 2025-02-04 a las 19.39.50_96be228b.jpg")));
 		avatarCircular.setBounds(21, 11, 56, 49);
 		panel.add(avatarCircular);
 
-		JLabel lblNewLabel = new JLabel("Listado de Usuarios");
+		JLabel lblNewLabel = new JLabel("Usuarios Islas");
 		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 19));
 		lblNewLabel.setBounds(79, 20, 479, 32);
 		panel.add(lblNewLabel);

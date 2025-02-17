@@ -57,7 +57,7 @@ public class MenuPrincAdmin extends JFrame {
 		mntmListadoUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					MostarListadoUsarios dialog = new MostarListadoUsarios(MenuPrincAdmin.this, sistema);
+					MostrarListadoUsuarios dialog = new MostrarListadoUsuarios(MenuPrincAdmin.this, sistema);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 
@@ -104,7 +104,19 @@ public class MenuPrincAdmin extends JFrame {
 		JMenu mnReportes = new JMenu("Reportes");
 		menuBar.add(mnReportes);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Relaciones de un usuario en en una estructura");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Relaciones de un usuario en una estructura");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostrarRelacionesUsuario dialog = new MostrarRelacionesUsuario(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnReportes.add(mntmNewMenuItem);
 		
 		JMenu mnNewMenu_1 = new JMenu("Obtener Usuarios Islas");
@@ -129,7 +141,7 @@ public class MenuPrincAdmin extends JFrame {
 		mntmNewMenuItem_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					MostarUsuariosIslas dialog = new MostarUsuariosIslas (MenuPrincAdmin.this, sistema);
+					MostrarUsuariosIslas dialog = new MostrarUsuariosIslas (MenuPrincAdmin.this, sistema);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 
@@ -197,7 +209,7 @@ public class MenuPrincAdmin extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try{
-					MostarListadoUsarios dialog = new MostarListadoUsarios(MenuPrincAdmin.this, sistema);
+					MostrarListadoUsuarios dialog = new MostrarListadoUsuarios(MenuPrincAdmin.this, sistema);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 

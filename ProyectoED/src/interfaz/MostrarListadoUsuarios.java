@@ -24,16 +24,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 
-public class MostarUsuariosIslas extends JDialog {
+public class MostrarListadoUsuarios extends JDialog implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private RedSystem sistema;
 	private JTable table;
 
-	public MostarUsuariosIslas(MenuPrincAdmin father,RedSystem system) {
+	public MostrarListadoUsuarios(MenuPrincAdmin father,RedSystem system) {
 		super(father, true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -89,7 +90,7 @@ public class MostarUsuariosIslas extends JDialog {
 		panel.add(btnmcnAtrs);
 
 		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setAvatar(new ImageIcon(MostarUsuariosIslas.class.getResource("/fotos/FotoUsuarios.png")));
+		avatarCircular.setAvatar(new ImageIcon(MostrarListadoUsuarios.class.getResource("/fotos/FotoUsuarios.png")));
 		avatarCircular.setBounds(21, 11, 56, 49);
 		panel.add(avatarCircular);
 
