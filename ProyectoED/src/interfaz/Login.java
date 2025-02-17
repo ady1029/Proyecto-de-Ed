@@ -1,5 +1,6 @@
 package interfaz;
 
+<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -44,6 +45,21 @@ public class Login extends JFrame {
 	private BotonAnimacion btnAccederLogin;
 	private BotonAnimacion btnRegistrarse;
 	private static RedSystem app;
+=======
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+
+public class Login extends JFrame {
+
+	private JPanel contentPane;
+
+>>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
 	/**
 	 * Launch the application.
 	 */
@@ -51,8 +67,11 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 					app = new RedSystem("WorkSphere");
 					inicializarDatos(app);
+=======
+>>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
 					Login frame = new Login();
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -66,6 +85,7 @@ public class Login extends JFrame {
 	 * Create the frame.
 	 */
 	public Login() {
+<<<<<<< Updated upstream:ProyectoED/src/interfaz/Login.java
 		setResizable(false);
 		setTitle("WorkSphere");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -227,4 +247,14 @@ public class Login extends JFrame {
 		}
 		return correcto;
 	}
+=======
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 777, 861);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+	}
+
+>>>>>>> Stashed changes:Proyecto Ed/src/interfaz/Login.java
 }
