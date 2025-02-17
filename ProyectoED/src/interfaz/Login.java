@@ -14,6 +14,8 @@ import javax.swing.UIManager;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
+
 import java.awt.Panel;
 import java.util.LinkedList;
 
@@ -128,6 +130,21 @@ public class Login extends JFrame {
 		panel_1.add(btnAccederLogin);
 
 		btnRegistrarse = new BotonAnimacion();
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							CrearCuenta dialog = new CrearCuenta();
+							dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+							dialog.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnRegistrarse.setText("CREAR CUENTA");
 		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 25));
 		btnRegistrarse.setColorEfecto(Color.WHITE);
