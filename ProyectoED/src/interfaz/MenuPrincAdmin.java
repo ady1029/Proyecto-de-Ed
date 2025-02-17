@@ -153,6 +153,18 @@ public class MenuPrincAdmin extends JFrame {
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Obtener Comunidades");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostrarComunidades dialog = new MostrarComunidades(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnReportes.add(mntmNewMenuItem_3);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Obtener Usuarios Líderes de Investigación ");
