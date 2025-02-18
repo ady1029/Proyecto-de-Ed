@@ -42,47 +42,48 @@ public class CrearCuenta extends JDialog {
 
 	public CrearCuenta(RedSystem a) {
 		app = a;
-		setBounds(100, 100, 1282, 722);
+		setBounds(100, 100, 1018, 637);
 		getContentPane().setLayout(null);
 		
 		panel = new PanelBordeOval(100);
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(58, 149, 693, 301);
+		panel.setBounds(45, 77, 626, 301);
+		setLocationRelativeTo(null);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		lblNombreUsuario = new JLabel("Usuario");
 		lblNombreUsuario.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblNombreUsuario.setBounds(10, 21, 107, 19);
+		lblNombreUsuario.setBounds(28, 21, 107, 19);
 		panel.add(lblNombreUsuario);
 		
 		textFieldNombreUsuario = new JTextField();
 		textFieldNombreUsuario.setFont(new Font("Arial Narrow", Font.PLAIN, 14));
 		textFieldNombreUsuario.setColumns(10);
 		textFieldNombreUsuario.setBackground(Color.WHITE);
-		textFieldNombreUsuario.setBounds(10, 51, 299, 35);
+		textFieldNombreUsuario.setBounds(10, 51, 275, 30);
 		panel.add(textFieldNombreUsuario);
 		
 		lblContrasenna = new JLabel("Contraseña");
 		lblContrasenna.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblContrasenna.setBounds(10, 120, 125, 19);
+		lblContrasenna.setBounds(28, 92, 125, 19);
 		panel.add(lblContrasenna);
 		
 		passwordFieldContrasenna = new JPasswordField();
 		passwordFieldContrasenna.setFont(new Font("Arial Narrow", Font.PLAIN, 14));
 		passwordFieldContrasenna.setBackground(Color.WHITE);
-		passwordFieldContrasenna.setBounds(10, 150, 298, 35);
+		passwordFieldContrasenna.setBounds(10, 122, 275, 30);
 		panel.add(passwordFieldContrasenna);
 		
 		passwordFieldConfirmarContrasenna = new JPasswordField();
 		passwordFieldConfirmarContrasenna.setFont(new Font("Arial Narrow", Font.PLAIN, 14));
 		passwordFieldConfirmarContrasenna.setBackground(Color.WHITE);
-		passwordFieldConfirmarContrasenna.setBounds(10, 241, 298, 35);
+		passwordFieldConfirmarContrasenna.setBounds(10, 201, 275, 30);
 		panel.add(passwordFieldConfirmarContrasenna);
 		
 		lblConfirmarContrasea = new JLabel("Confirmar contraseña");
 		lblConfirmarContrasea.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblConfirmarContrasea.setBounds(10, 211, 173, 19);
+		lblConfirmarContrasea.setBounds(28, 171, 173, 19);
 		panel.add(lblConfirmarContrasea);
 		
 		lblOcupacin = new JLabel("Ocupación");
@@ -92,21 +93,21 @@ public class CrearCuenta extends JDialog {
 		
 		lblPais = new JLabel("País");
 		lblPais.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblPais.setBounds(354, 124, 125, 19);
+		lblPais.setBounds(354, 92, 125, 19);
 		panel.add(lblPais);
 		
 		comboBoxPais = new JComboBox();
 		comboBoxPais.setFont(new Font("Arial Narrow", Font.PLAIN, 14));
 		comboBoxPais.setModel(new DefaultComboBoxModel(Pais.values()));
 		comboBoxPais.setBackground(Color.WHITE);
-		comboBoxPais.setBounds(354, 150, 298, 35);
+		comboBoxPais.setBounds(336, 121, 275, 30);
 		panel.add(comboBoxPais);
 		
 		textFieldOcupacion = new JTextField();
 		textFieldOcupacion.setFont(new Font("Arial Narrow", Font.PLAIN, 14));
 		textFieldOcupacion.setColumns(10);
 		textFieldOcupacion.setBackground(Color.WHITE);
-		textFieldOcupacion.setBounds(354, 51, 299, 35);
+		textFieldOcupacion.setBounds(336, 51, 275, 30);
 		panel.add(textFieldOcupacion);
 		
 		lblNewLabel_1 = new JLabel("");
@@ -157,7 +158,7 @@ public class CrearCuenta extends JDialog {
 		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 30));
 		btnRegistrarse.setColorEfecto(Color.WHITE);
 		btnRegistrarse.setBackground(Color.WHITE);
-		btnRegistrarse.setBounds(58, 476, 217, 48);
+		btnRegistrarse.setBounds(57, 423, 217, 40);
 		getContentPane().add(btnRegistrarse);
 		
 		BotonAnimacion btnmcnVolverAInicio = new BotonAnimacion();
@@ -173,12 +174,12 @@ public class CrearCuenta extends JDialog {
 		btnmcnVolverAInicio.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 30));
 		btnmcnVolverAInicio.setColorEfecto(Color.WHITE);
 		btnmcnVolverAInicio.setBackground(Color.WHITE);
-		btnmcnVolverAInicio.setBounds(531, 476, 217, 48);
+		btnmcnVolverAInicio.setBounds(454, 423, 217, 40);
 		getContentPane().add(btnmcnVolverAInicio);
 		
 		JLabel lblNewLabel = new JLabel("New label");
 		lblNewLabel.setIcon(new ImageIcon(CrearCuenta.class.getResource("/fotos/2.png")));
-		lblNewLabel.setBounds(10, 0, 1266, 694);
+		lblNewLabel.setBounds(0, 0, 1008, 605);
 		getContentPane().add(lblNewLabel);
 
 	}

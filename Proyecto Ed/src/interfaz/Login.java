@@ -78,7 +78,8 @@ public class Login extends JFrame {
 		setResizable(false);
 		setTitle("WorkSphere");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1177, 722);
+		setBounds(100, 100, 1080, 596);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -86,24 +87,24 @@ public class Login extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(0, 0, 1279, 706);
+		panel_1.setBounds(0, 0, 1124, 557);
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 
 		panelInicioSeccion = new PanelBordeOval(100);
 		panelInicioSeccion.setBackground(Color.WHITE);
-		panelInicioSeccion.setBounds(775, 189, 363, 354);
+		panelInicioSeccion.setBounds(747, 133, 300, 325);
 		panel_1.add(panelInicioSeccion);
 		panelInicioSeccion.setLayout(null);
 
 		lblNewLabel_1 = new JLabel("INICIA SESIÓN EN TU");
-		lblNewLabel_1.setFont(new Font("Arial Narrow", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(67, -15, 273, 96);
+		lblNewLabel_1.setFont(new Font("Arial Narrow", Font.PLAIN, 28));
+		lblNewLabel_1.setBounds(37, -16, 273, 96);
 		panelInicioSeccion.add(lblNewLabel_1);
 
 		lblNewLabel_2 = new JLabel("CUENTA");
-		lblNewLabel_2.setFont(new Font("Arial Narrow", Font.PLAIN, 30));
-		lblNewLabel_2.setBounds(124, 54, 200, 47);
+		lblNewLabel_2.setFont(new Font("Arial Narrow", Font.PLAIN, 28));
+		lblNewLabel_2.setBounds(91, 49, 200, 47);
 		panelInicioSeccion.add(lblNewLabel_2);
 
 		lblNombreUsuario = new JLabel("Usuario");
@@ -113,14 +114,14 @@ public class Login extends JFrame {
 
 		lblContrasenna = new JLabel("Contraseña");
 		lblContrasenna.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblContrasenna.setBounds(37, 233, 85, 19);
+		lblContrasenna.setBounds(33, 195, 85, 19);
 		panelInicioSeccion.add(lblContrasenna);
 
 		textFieldNombreUsuario = new JTextField();
 		textFieldNombreUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldNombreUsuario.setFont(new Font("Arial", Font.PLAIN, 18));
 		textFieldNombreUsuario.setBackground(Color.WHITE);
-		textFieldNombreUsuario.setBounds(36, 155, 273, 35);
+		textFieldNombreUsuario.setBounds(23, 149, 251, 35);
 		panelInicioSeccion.add(textFieldNombreUsuario);
 		textFieldNombreUsuario.setColumns(10);
 
@@ -128,13 +129,13 @@ public class Login extends JFrame {
 		passwordField.setFont(new Font("Arial", Font.PLAIN, 18));
 		passwordField.setHorizontalAlignment(SwingConstants.CENTER);
 		passwordField.setBackground(Color.WHITE);
-		passwordField.setBounds(37, 262, 273, 35);
+		passwordField.setBounds(23, 222, 251, 35);
 		panelInicioSeccion.add(passwordField);
 
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setForeground(new Color(255, 0, 0));
 		lblNewLabel_3.setFont(new Font("Arial Narrow", Font.PLAIN, 16));
-		lblNewLabel_3.setBounds(87, 307, 205, 37);
+		lblNewLabel_3.setBounds(105, 268, 169, 37);
 		panelInicioSeccion.add(lblNewLabel_3);
 
 		btnAccederLogin = new BotonAnimacion();
@@ -168,10 +169,10 @@ public class Login extends JFrame {
 			}
 		});
 		btnAccederLogin.setText("ACCEDER");
-		btnAccederLogin.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 25));
+		btnAccederLogin.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 23));
 		btnAccederLogin.setColorEfecto(Color.WHITE);
 		btnAccederLogin.setBackground(Color.WHITE);
-		btnAccederLogin.setBounds(773, 603, 139, 48);
+		btnAccederLogin.setBounds(747, 477, 119, 31);
 		panel_1.add(btnAccederLogin);
 
 		btnRegistrarse = new BotonAnimacion();
@@ -185,17 +186,15 @@ public class Login extends JFrame {
 		});
 		
 		btnRegistrarse.setText("CREAR CUENTA");
-		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 25));
+		btnRegistrarse.setFont(new Font("Arial Narrow", Font.BOLD | Font.ITALIC, 23));
 		btnRegistrarse.setColorEfecto(Color.WHITE);
 		btnRegistrarse.setBackground(Color.WHITE);
-		btnRegistrarse.setBounds(951, 603, 187, 48);
+		btnRegistrarse.setBounds(876, 477, 165, 31);
 		panel_1.add(btnRegistrarse);
-
-		JLabel lblNewLabel = new JLabel("New label");
+		
+		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/fotos/✅.png")));
-		lblNewLabel.setBounds(0, 0, 1269, 683);
-		lblNewLabel.setIcon(new ImageIcon(Login.class.getResource("/fotos/✅.png")));
-		lblNewLabel.setBounds(0, 0, 1167, 683);
+		lblNewLabel.setBounds(0, 0, 1093, 558);
 		panel_1.add(lblNewLabel);
 	}
 	
@@ -212,7 +211,7 @@ public class Login extends JFrame {
 		grafo.insertVertex(num4);
 		grafo.insertVertex(num5);
 		app.setGraph(grafo);
-		app.setAdministrador(new Person("Administrador", "111", Pais.CUBA, "Administrador"));
+		app.setAdministrador(new Person("admin", "111", Pais.CUBA, "Administrador"));
 
 		boolean crearSolicitud = app.crearSolicitud(((Person) app.getGraph().getVerticesList().get(0).getInfo()),((Person) app.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud1 = app.crearSolicitud(((Person) app.getGraph().getVerticesList().get(1).getInfo()),((Person) app.getGraph().getVerticesList().get(2).getInfo()), 9);
@@ -239,6 +238,5 @@ public class Login extends JFrame {
 		}
 		return correcto;
 	}
-	
 }
 
