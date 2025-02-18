@@ -30,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -43,7 +44,7 @@ public class MostrarComunidades extends JDialog implements Serializable{
 	private JTable table;
 	private GeneralTree<Person> arbol;
 
-	public MostrarComunidades(MenuPrincAdmin father,RedSystem system) {
+	public MostrarComunidades(MenuPrincAdmin father,RedSystem system) throws IOException {
 		super(father, true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -109,7 +110,7 @@ public class MostrarComunidades extends JDialog implements Serializable{
 
 		llenarTabla();
 	}
-	private void llenarTabla() {
+	private void llenarTabla() throws IOException {
 		LinkedList<Comunity> comunidades= sistema.obtenerComunidades();
 		int total=0;
 		for(Comunity comunidad: comunidades) {

@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import interfaz.MenuPrincAdmin;
 
 public class MainPrueba {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		RedSystem sis = new RedSystem("Hablemos");
 		ILinkedWeightedEdgeNotDirectedGraph grafo = new LinkedGraph();
