@@ -29,6 +29,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -93,7 +94,12 @@ public class MostrarRelacionesUsuario extends JDialog implements Serializable{
 				String a= (String)comboBox.getSelectedItem();
 				Vertex aux= sistema.findNick(a);
 				textArea.setText("");
-				llenarTabla((Person)aux.getInfo());
+				try {
+					llenarTabla((Person)aux.getInfo());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -152,7 +158,7 @@ public class MostrarRelacionesUsuario extends JDialog implements Serializable{
 		return nikcs;
 	}
 
-	private void llenarTabla(Person p) {
+	private void llenarTabla(Person p) throws IOException {
 		arbol= sistema.obtenerTodasconexiones(p);
 		mostarIteratotr();
 		int ab = arbol.treeHeight()+1;

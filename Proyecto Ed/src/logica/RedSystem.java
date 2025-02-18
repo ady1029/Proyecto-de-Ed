@@ -11,8 +11,10 @@ import cu.edu.cujae.ceis.graph.edge.Edge;
 import cu.edu.cujae.ceis.graph.edge.WeightedEdge;
 import cu.edu.cujae.ceis.graph.interfaces.ILinkedWeightedEdgeNotDirectedGraph;
 import cu.edu.cujae.ceis.graph.vertex.Vertex;
+import cu.edu.cujae.ceis.sectree.node.Node;
 import cu.edu.cujae.ceis.tree.binary.BinaryTreeNode;
 import cu.edu.cujae.ceis.tree.general.GeneralTree;
+import cu.edu.cujae.ceis.tree.iterators.general.InBreadthIterator;
 
 public class RedSystem implements Serializable{
 	/**
@@ -148,7 +150,7 @@ public class RedSystem implements Serializable{
 
 	// Obtener arbol con todos los conectados directa e indirectamente con un
 	// vertice
-	public GeneralTree<Person> obtenerTodasconexiones(Person person) {
+	public GeneralTree<Person> obtenerTodasconexiones(Person person) throws IOException {
 		Vertex persona = findNick(person.getNick());
 		BinaryTreeNode<Person> root = new BinaryTreeNode<Person>(person);
 		GeneralTree<Person> arbol = new GeneralTree<Person>(root);
@@ -156,6 +158,7 @@ public class RedSystem implements Serializable{
 		visitados.add(persona);
 		int i = 0;
 		insertarVertices(persona, arbol, visitados, i);
+		almacenarArbolGeneralTodasConexiones(arbol);
 		return arbol;
 	}
 
@@ -340,12 +343,18 @@ public class RedSystem implements Serializable{
 		promedioFile.write(arrayLideres);
 	}
 
-	/*//da error tengo que seguir revisando
+	//Fichero arbol general todas conexiones
 	public void almacenarArbolGeneralTodasConexiones(GeneralTree <Person> conexiones) throws IOException {
 		RandomAccessFile arbolGeneral = new RandomAccessFile("arbol.text", "rwd");
-		byte [] arrayBytesArbol = Convert.toBytes(arbolGeneral);
-		arbolGeneral.write(arrayBytesArbol.length);
-		arbolGeneral.write(arrayBytesArbol);
+		if(!conexiones.isEmpty()) {
+			InBreadthIterator<Person> iter = conexiones.inBreadthIterator();
+			while(iter.hasNext()) {
+				BinaryTreeNode<Person> auxNode = iter.nextNode();
+				Person aux = auxNode.getInfo();
+				byte [] arrayPerson = Convert.toBytes(aux);
+				arbolGeneral.writeLong(arrayPerson.length);
+				arbolGeneral.write(arrayPerson);
+			}
+		}
 	}
-	 */
 }

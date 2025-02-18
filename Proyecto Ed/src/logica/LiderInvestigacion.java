@@ -1,6 +1,10 @@
 package logica;
 
 public class LiderInvestigacion extends Person{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int tamañoComunidad;
 	private float promedio;
 
