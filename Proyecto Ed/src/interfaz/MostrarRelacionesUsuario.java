@@ -97,7 +97,6 @@ public class MostrarRelacionesUsuario extends JDialog implements Serializable{
 				try {
 					llenarTabla((Person)aux.getInfo());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				
@@ -110,12 +109,15 @@ public class MostrarRelacionesUsuario extends JDialog implements Serializable{
 		JLabel lblNewLabel_1 = new JLabel("Recorrido del arbol a lo ancho por niveles");
 		lblNewLabel_1.setBounds(20, 350, 253, 14);
 		panelBordeOval.add(lblNewLabel_1);
-
-		textArea = new JTextArea();
-		textArea.setForeground(Color.BLACK);
-		textArea.setEditable(false);
-		textArea.setBounds(291, 331, 213, 65);
-		panelBordeOval.add(textArea);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(290, 331, 214, 65);
+		panelBordeOval.add(scrollPane_1);
+		
+				textArea = new JTextArea();
+				scrollPane_1.setViewportView(textArea);
+				textArea.setForeground(Color.BLACK);
+				textArea.setEditable(false);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(42, 167, 255));

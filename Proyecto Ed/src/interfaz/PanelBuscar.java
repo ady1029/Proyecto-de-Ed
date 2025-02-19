@@ -39,6 +39,7 @@ public class PanelBuscar extends JDialog {
 	 */
 	public PanelBuscar(MenuPrincAdmin father, RedSystem sistema) {
 		super(father, true);
+		setUndecorated(true);
 		menup = father;
 		red = sistema;
 		setTitle("Buscar Usuario");
@@ -88,7 +89,42 @@ public class PanelBuscar extends JDialog {
 		lblNewLabel_2.setBounds(21, 144, 193, 20);
 		getContentPane().add(lblNewLabel_2);
 		
+		AvatarCircular avatarCircular = new AvatarCircular();
+		avatarCircular.setBounds(341, 54, 113, 110);
+		getContentPane().add(avatarCircular);
+		avatarCircular.setAvatar(new ImageIcon(PanelBuscar.class.getResource("/fotos/Imagen de WhatsApp 2025-02-04 a las 19.39.50_96be228b.jpg")));
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(21, 170, 298, 20);
+		getContentPane().add(textField_2);
+		textField_2.setColumns(10);
+		textField_2.setBorder(null);
+		textField_2.setBackground(new Color(0, 204, 255));
+		
+		PanelBordeOval panelBordeOval = new PanelBordeOval(0);
+		panelBordeOval.setBackground(new Color(0, 204, 255));
+		panelBordeOval.setValorEsquinaOvalSI(60);
+		panelBordeOval.setValorEsquinaOvalSD(60);
+		panelBordeOval.setValorEsquinaOvalII(60);
+		panelBordeOval.setValorEsquinaOvalID(60);
+		panelBordeOval.setBounds(10, 11, 470, 218);
+		getContentPane().add(panelBordeOval);
+		panelBordeOval.setLayout(null);
+		
+		Linea linea_1_1 = new Linea(0, 0);
+		linea_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
+		linea_1_1.setBounds(10, 180, 260, 1);
+		panelBordeOval.add(linea_1_1);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(0, 102, 255));
+		panel.setBounds(0, 0, 490, 300);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
 		BotonAnimacion btnmcnBuscar = new BotonAnimacion();
+		btnmcnBuscar.setBounds(391, 246, 89, 34);
+		panel.add(btnmcnBuscar);
 		btnmcnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String a = textFieldNick.getText();
@@ -116,10 +152,10 @@ public class PanelBuscar extends JDialog {
 		});
 		btnmcnBuscar.setFont(new Font("Arial", Font.PLAIN, 14));
 		btnmcnBuscar.setText("Buscar");
-		btnmcnBuscar.setBounds(343, 216, 89, 34);
-		getContentPane().add(btnmcnBuscar);
 		
 		BotonAnimacion btnmcnAtrs = new BotonAnimacion();
+		btnmcnAtrs.setBounds(20, 246, 89, 34);
+		panel.add(btnmcnAtrs);
 		btnmcnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					dispose();
@@ -127,40 +163,6 @@ public class PanelBuscar extends JDialog {
 		});
 		btnmcnAtrs.setText("Atrás");
 		btnmcnAtrs.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnmcnAtrs.setBounds(21, 216, 89, 34);
-		getContentPane().add(btnmcnAtrs);
-		
-		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setBounds(341, 54, 113, 110);
-		getContentPane().add(avatarCircular);
-		avatarCircular.setAvatar(new ImageIcon(PanelBuscar.class.getResource("/fotos/Imagen de WhatsApp 2025-02-04 a las 19.39.50_96be228b.jpg")));
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(21, 170, 298, 20);
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		textField_2.setBorder(null);
-		textField_2.setBackground(new Color(0, 204, 255));
-		
-		PanelBordeOval panelBordeOval = new PanelBordeOval(0);
-		panelBordeOval.setBackground(new Color(0, 204, 255));
-		panelBordeOval.setValorEsquinaOvalSI(60);
-		panelBordeOval.setValorEsquinaOvalSD(60);
-		panelBordeOval.setValorEsquinaOvalII(60);
-		panelBordeOval.setValorEsquinaOvalID(60);
-		panelBordeOval.setBounds(10, 11, 454, 196);
-		getContentPane().add(panelBordeOval);
-		panelBordeOval.setLayout(null);
-		
-		Linea linea_1_1 = new Linea(0, 0);
-		linea_1_1.setBorder(new LineBorder(new Color(0, 0, 0)));
-		linea_1_1.setBounds(10, 180, 260, 1);
-		panelBordeOval.add(linea_1_1);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 102, 255));
-		panel.setBounds(0, 0, 477, 261);
-		getContentPane().add(panel);
 		// TODO Auto-generated constructor stub
 	}
 

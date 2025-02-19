@@ -89,6 +89,19 @@ public class MenuPrincAdmin extends JFrame {
 		mnNewMenu_3.add(mntmMatrizAdjacencia);
 		
 		mntmListadoRelaciones = new JMenuItem("Listado de Ralciones ");
+		mntmListadoRelaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					MostrarRelaciones dialog = new MostrarRelaciones(MenuPrincAdmin.this, sistema);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+					
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		mnNewMenu_3.add(mntmListadoRelaciones);
 		
 		JMenuItem Exit = new JMenuItem("Cerrar Sesión");
@@ -295,7 +308,7 @@ public class MenuPrincAdmin extends JFrame {
 		panelAnimacionCurvas.add(lblCerrarSesin);
 		
 		AvatarCircular avatarCircular_3 = new AvatarCircular();
-		avatarCircular_3.setAvatar(new ImageIcon(MenuPrincAdmin.class.getResource("/fotos/LideresInvestigacion.jpg")));
+		avatarCircular_3.setAvatar(new ImageIcon(MenuPrincAdmin.class.getResource("/fotos/195203d41f527.png")));
 		avatarCircular_3.setBounds(308, 213, 131, 119);
 		panelAnimacionCurvas.add(avatarCircular_3);
 		

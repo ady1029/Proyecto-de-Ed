@@ -44,11 +44,12 @@ public class InfoUsuario extends JDialog {
 	private List <Person> solic;
 	private JTextField textFieldTrabC;
 	private BotonAnimacion btnmcnSiguiente_1;
+	private BotonAnimacion btnmcnSiguiente_2;
+	private BotonAnimacion btnmcnConfirmar_1;
+	private BotonAnimacion btnmcnAtrs;
 
 
-	/**
-	 * @wbp.parser.constructor
-	 */
+
 	public InfoUsuario(MenuPrincAdmin menuAdmin,Person p, RedSystem r, int sol) {
 		super(menuAdmin, true);
 		a=p;
@@ -391,12 +392,17 @@ public class InfoUsuario extends JDialog {
 
 		}
 	}
-	public InfoUsuario(solicitudesOpciones menuUsuario,Person p, RedSystem r, int sol) {
+
+	/**
+	 * @wbp.parser.constructor
+	 */
+
+	public InfoUsuario(SolicitudesOpciones menuUsuario,Person p, RedSystem r, int sol) {
 		super(menuUsuario, true);
 		a=p;
 		red = r;
 		aux =0;
-		setBounds(100, 100, 548, 420);
+		setBounds(100, 100, 527, 468);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(55, 165, 255));
 		setLocationRelativeTo(null);
@@ -410,7 +416,7 @@ public class InfoUsuario extends JDialog {
 		panelBordeOval.setValorEsquinaOvalSD(60);
 		panelBordeOval.setValorEsquinaOvalII(60);
 		panelBordeOval.setValorEsquinaOvalID(60);
-		panelBordeOval.setBounds(22, 11, 449, 284);
+		panelBordeOval.setBounds(22, 11, 449, 339);
 		contentPanel.add(panelBordeOval);
 		panelBordeOval.setLayout(null);
 
@@ -419,13 +425,13 @@ public class InfoUsuario extends JDialog {
 		avatarCircular.setBounds(10, 21, 114, 106);
 		panelBordeOval.add(avatarCircular);
 
-		JLabel usuario = new JLabel("");
+		JLabel usuario = new JLabel("zhrs");
 		usuario.setFont(new Font("Arial", Font.PLAIN, 24));
 		usuario.setHorizontalAlignment(SwingConstants.CENTER);
 		usuario.setBounds(134, 46, 199, 33);
 		panelBordeOval.add(usuario);
 
-		JLabel ocupacion = new JLabel("");
+		JLabel ocupacion = new JLabel("afd");
 		ocupacion.setFont(new Font("Arial", Font.PLAIN, 24));
 		ocupacion.setBounds(144, 79, 189, 33);
 		panelBordeOval.add(ocupacion);
@@ -460,22 +466,58 @@ public class InfoUsuario extends JDialog {
 		panelBordeOval.add(trabajosPC);
 
 		JLabel labelCantTComun = new JLabel("Cantidad de trabajos en común:");
-		labelCantTComun.setEnabled(false);
-		labelCantTComun.setVisible(false);
 		labelCantTComun.setFont(new Font("Arial", Font.PLAIN, 18));
 		labelCantTComun.setBounds(10, 242, 278, 33);
 		panelBordeOval.add(labelCantTComun);
 
 		textFieldTrabC = new JTextField();
 		textFieldTrabC.setFont(new Font("Arial", Font.PLAIN, 12));
-		textFieldTrabC.setEnabled(false);
-		textFieldTrabC.setVisible(false);
 		textFieldTrabC.setBounds(277, 242, 96, 28);
 		panelBordeOval.add(textFieldTrabC);
 		textFieldTrabC.setColumns(10);
 
-		BotonAnimacion btnmcnSiguiente = new BotonAnimacion();
-		btnmcnSiguiente.addActionListener(new ActionListener() {
+		btnmcnConfirmar_1 = new BotonAnimacion();
+		btnmcnConfirmar_1.setBounds(344, 296, 77, 29);
+		panelBordeOval.add(btnmcnConfirmar_1);
+		btnmcnConfirmar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!act()) {
+					boolean ab = red.crearSolicitud(a, solic.get(aux), Integer.parseInt(textFieldTrabC.getText()));
+					if(ab && (!(textFieldTrabC.getText().equalsIgnoreCase("")))) {
+						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud Enviada.");
+						menuUsuario.getFather().inic("Solicitud de amistad enviada a "+ solic.get(aux).getNick());
+						solic.remove(aux);
+						if(solic.size()> aux) {
+							usuario.setText(solic.get(aux).getNick());
+							ocupacion.setText(solic.get(aux).getOccupation());
+							pais.setText(solic.get(aux).getCountry().name());
+							amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
+							trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
+							textFieldTrabC.setText("");
+							if(aux+1 == solic.size()) {
+								btnmcnSiguiente_2.setEnabled(false);
+							}
+							if(aux-1 <= 0)
+								btnmcnAtrs.setEnabled(false);
+						}
+						else {
+							dispose();
+						}
+					}
+					else
+						JOptionPane.showMessageDialog(InfoUsuario.this, "Ya se le ha enviado una solicitud de amistad ");
+				}
+				else {
+					JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común tiene que ser un número entero.");
+					textFieldTrabC.setText("");
+				}	 
+			}
+		});
+		btnmcnConfirmar_1.setForeground(new Color(0, 255, 0));
+		btnmcnConfirmar_1.setText("Enviar");
+
+		btnmcnSiguiente_2 = new BotonAnimacion();
+		btnmcnSiguiente_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				aux ++;
 				if(aux < solic.size()) {
@@ -484,14 +526,17 @@ public class InfoUsuario extends JDialog {
 					pais.setText(solic.get(aux).getCountry().name());
 					amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
 					trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
+					textFieldTrabC.setText("");
+					btnmcnAtrs.setEnabled(true);
+					if(aux+1 == solic.size()) {
+						btnmcnSiguiente_2.setEnabled(false);
+					}
 				}
 			}
 		});
-		btnmcnSiguiente.setEnabled(false);
-		btnmcnSiguiente.setText("Siguiente ");
-		btnmcnSiguiente.setVisible(false);
-		btnmcnSiguiente.setBounds(384, 328, 77, 29);
-		contentPanel.add(btnmcnSiguiente);
+		btnmcnSiguiente_2.setText("Siguiente ");
+		btnmcnSiguiente_2.setBounds(392, 374, 77, 29);
+		contentPanel.add(btnmcnSiguiente_2);
 
 		BotonAnimacion btnmcnAtras = new BotonAnimacion();
 		btnmcnAtras.addActionListener(new ActionListener() {
@@ -499,66 +544,45 @@ public class InfoUsuario extends JDialog {
 				dispose();
 			}
 		});
-		btnmcnAtras.setText("Atrás ");
-		btnmcnAtras.setBounds(22, 328, 77, 29);
+		btnmcnAtras.setText("Salir");
+		btnmcnAtras.setBounds(22, 374, 77, 29);
 		contentPanel.add(btnmcnAtras);
 
-		BotonAnimacion btnmcnConfirmar = new BotonAnimacion();
-		btnmcnConfirmar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				if(!act()) {
-					boolean ab = red.crearSolicitud(a, solic.get(aux), Integer.parseInt(textFieldTrabC.getText()));
-					if(ab && (!(textFieldTrabC.getText().equalsIgnoreCase("")))) {
-						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud Enviada.");
-						solic.remove(aux);
-						aux ++;
-						if(solic.size()> aux) {
-							usuario.setText(solic.get(aux).getNick());
-							ocupacion.setText(solic.get(aux).getOccupation());
-							pais.setText(solic.get(aux).getCountry().name());
-							amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
-							trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
-							textFieldTrabC.setText("");
-						}
-						else {
-							JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. Rellene el campo del trabajo en común.");
-							dispose();
-						}
+		btnmcnAtrs = new BotonAnimacion();
+		btnmcnAtrs.setEnabled(false);
+		btnmcnAtrs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				aux--;
+				if(aux >=0) {
+					usuario.setText(solic.get(aux).getNick());
+					ocupacion.setText(solic.get(aux).getOccupation());
+					pais.setText(solic.get(aux).getCountry().name());
+					amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
+					trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
+					btnmcnAtras.setEnabled(true);
+					btnmcnSiguiente_2.setEnabled(true);
+					if(aux+1 == solic.size()) {
+						btnmcnAtras.setEnabled(false);
 					}
-					else
-						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. Rellene el campo del trabajo en común.");
 				}
-				else {
-					JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común tiene que ser un número entero.");
-					textFieldTrabC.setText("");
-				}	 
 			}
 		});
-		btnmcnConfirmar.setForeground(new Color(0, 255, 0));
-		btnmcnConfirmar.setText("Confirmar ");
-		btnmcnConfirmar.setEnabled(false);
-		btnmcnConfirmar.setVisible(false);
-		btnmcnConfirmar.setBounds(270, 328, 77, 29);
-		contentPanel.add(btnmcnConfirmar);
+		btnmcnAtrs.setText("Atrás ");
+		btnmcnAtrs.setBounds(302, 374, 77, 29);
+		contentPanel.add(btnmcnAtrs);
 
-		if(sol == 2) {
-			solic = personasSinRel();
-			btnmcnConfirmar.setText("Enviar");
-			btnmcnConfirmar.setEnabled(true);
-			btnmcnConfirmar.setVisible(true);
-			btnmcnSiguiente.setEnabled(true);
-			btnmcnSiguiente.setVisible(true);
-			labelCantTComun.setEnabled(true);
-			labelCantTComun.setVisible(true);
-			textFieldTrabC.setEnabled(true);
-			textFieldTrabC.setVisible(true);
+		solic = personasSinRel();
+		if(solic.size()>0) {
 			usuario.setText(solic.get(aux).getNick());
 			ocupacion.setText(solic.get(aux).getOccupation());
 			pais.setText(solic.get(aux).getCountry().name());
 			amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
 			trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
-
 		}
+		if(solic.size()<2) {
+			btnmcnSiguiente_2.setEnabled(false);
+		}
+
 	}
 
 
