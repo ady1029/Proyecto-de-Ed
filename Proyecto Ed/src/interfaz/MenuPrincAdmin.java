@@ -43,6 +43,7 @@ public class MenuPrincAdmin extends JFrame {
 		app= sistema;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 753, 528);
+		setLocationRelativeTo(null);
 		this.setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -125,7 +126,7 @@ public class MenuPrincAdmin extends JFrame {
 		mntmNewMenuItem_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema, null);
+					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 
@@ -188,7 +189,7 @@ public class MenuPrincAdmin extends JFrame {
 		mntmNewMenuItem_7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
-					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema, null);
+					PanelBuscar dialog = new PanelBuscar(MenuPrincAdmin.this, sistema);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 

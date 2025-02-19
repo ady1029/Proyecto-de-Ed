@@ -25,6 +25,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class MostrarUsuariosIslas extends JDialog {
@@ -34,7 +35,7 @@ public class MostrarUsuariosIslas extends JDialog {
 	private RedSystem sistema;
 	private JTable table;
 
-	public MostrarUsuariosIslas(MenuPrincAdmin father,RedSystem system) {
+	public MostrarUsuariosIslas(MenuPrincAdmin father,RedSystem system) throws IOException {
 		super(father, true);
 		setResizable(false);
 		setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
@@ -114,7 +115,7 @@ public class MostrarUsuariosIslas extends JDialog {
 		return nikcs;
 	}
 
-	private void llenarTabla() {
+	private void llenarTabla() throws IOException {
 		LinkedList <Person> islas= sistema.personasSinConexiones();
 		DefaultTableModel modelodefault= new DefaultTableModel(new String[] {"Nombre", "Ocupaci\u00F3n", "Pa\u00EDs"},islas.size()){
 			public boolean isCellEditable(int row, int column) {return false;}};

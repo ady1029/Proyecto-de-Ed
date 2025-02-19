@@ -43,12 +43,14 @@ public class MostrarAmigos extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public MostrarAmigos(RedSystem b, Person a) {
+	public MostrarAmigos(MenuUsuario menuUsuario, RedSystem b, Person a) {
+		super(menuUsuario, true);
 		app = b;
 		p = a;
 		setBounds(100, 100, 729, 550);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setLocationRelativeTo(null);
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
@@ -61,9 +63,6 @@ public class MostrarAmigos extends JDialog {
 		BotonAnimacion btnmcnAtrs = new BotonAnimacion();
 		btnmcnAtrs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				MenuUsuario frame = new MenuUsuario(null, b, a);
-				frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-				frame.setVisible(true);
 				dispose();
 			}
 		});

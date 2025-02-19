@@ -15,6 +15,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import java.awt.Font;
+import java.awt.Menu;
+
 import componentesVisuales.Linea;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
@@ -33,6 +35,10 @@ import javax.swing.JTextPane;
 import javax.swing.JTextArea;
 import componentesVisuales.BotonAnimacion;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class MenuUsuario extends JFrame {
 
@@ -49,6 +55,7 @@ public class MenuUsuario extends JFrame {
 		a = p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 913, 550);
+		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -57,24 +64,64 @@ public class MenuUsuario extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Mi Perfil");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app,0);
+				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Mis Amigos");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MostrarAmigos dialog = new MostrarAmigos(MenuUsuario.this,app,p);
+				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
 		JMenu mnNewMenu_1 = new JMenu("Solicitudes");
 		menuBar.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Enviar");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				solicitudesOpciones dialog = new solicitudesOpciones(MenuUsuario.this,p,app);
+				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app, 1);
+				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				dialog.setVisible(true);
+			}
+		});
 		mnNewMenu_1.add(mntmNewMenuItem_3);
 		
 		JMenu mnNewMenu_2 = new JMenu("Buscar");
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Buscar Usuario");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try{
+					PanelBuscar dialog = new PanelBuscar(MenuUsuario.this, aplic);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_4);
 		
 		JMenu mnNewMenu_3 = new JMenu("Ajuste");
@@ -85,6 +132,12 @@ public class MenuUsuario extends JFrame {
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Cambiar Contraseña de Usuario");
 		mnNewMenu_3.add(mntmNewMenuItem_6);
+		
+		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Cambiar País");
+		mnNewMenu_3.add(mntmNewMenuItem_7);
+		
+		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Cambiar Ocupacióm");
+		mnNewMenu_3.add(mntmNewMenuItem_8);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -114,17 +167,17 @@ public class MenuUsuario extends JFrame {
 		avatarCircular.setBounds(10, 11, 83, 74);
 		panelBordeOval.add(avatarCircular);
 		
-		JLabel lblNewLabel = new JLabel("Nick del usuario");
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(86, 23, 140, 22);
-		panelBordeOval.add(lblNewLabel);
+		JLabel nombreU = new JLabel("");
+		nombreU.setFont(new Font("Arial", Font.PLAIN, 17));
+		nombreU.setHorizontalAlignment(SwingConstants.CENTER);
+		nombreU.setBounds(86, 23, 140, 22);
+		panelBordeOval.add(nombreU);
 		
-		JLabel lblOcupacion = new JLabel("Ocupacion");
-		lblOcupacion.setHorizontalAlignment(SwingConstants.CENTER);
-		lblOcupacion.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblOcupacion.setBounds(73, 46, 140, 22);
-		panelBordeOval.add(lblOcupacion);
+		JLabel OcupacionU = new JLabel("");
+		OcupacionU.setHorizontalAlignment(SwingConstants.CENTER);
+		OcupacionU.setFont(new Font("Arial", Font.PLAIN, 17));
+		OcupacionU.setBounds(73, 46, 140, 22);
+		panelBordeOval.add(OcupacionU);
 		linea.setBorder(new LineBorder(Color.BLACK, 1, true));
 		linea.setGrosor(1);
 		linea.setBounds(0, 91, 270, 1);
@@ -139,10 +192,9 @@ public class MenuUsuario extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				InfoUsuario dialog = new InfoUsuario(p,app);
+				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app,0);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-				setVisible(false);
 				
 			}
 		});
@@ -158,10 +210,9 @@ public class MenuUsuario extends JFrame {
 		lblNewLabel_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				MostrarAmigos dialog = new MostrarAmigos(app,p);
+				MostrarAmigos dialog = new MostrarAmigos(MenuUsuario.this,app,p);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-				setVisible(false);
 			}
 		});
 		lblNewLabel_1_1.setBounds(47, 145, 151, 14);
@@ -176,10 +227,9 @@ public class MenuUsuario extends JFrame {
 		lblNewLabel_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				InfoUsuario dialog = new InfoUsuario(p,app);
+				solicitudesOpciones dialog = new solicitudesOpciones(MenuUsuario.this,p,app);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-				setVisible(false);
 			}
 		});
 		lblNewLabel_1_1_1.setBounds(47, 180, 166, 14);
@@ -194,11 +244,13 @@ public class MenuUsuario extends JFrame {
 		lblNewLabel_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				InfoUsuario dialog = new InfoUsuario(p,app);
+				if(!p.getSolicitudAmistad().isEmpty()) {
+				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app, 1);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-				setVisible(false);
-				
+				}
+				else
+					JOptionPane.showMessageDialog(MenuUsuario.this, "No hay solicitudes de amistad");
 			}
 		});
 		lblNewLabel_1_1_1_1.setBounds(47, 214, 178, 14);
@@ -214,10 +266,9 @@ public class MenuUsuario extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				try{
-					PanelBuscar dialog = new PanelBuscar(null, aplic, MenuUsuario.this);
+					PanelBuscar dialog = new PanelBuscar(MenuUsuario.this, aplic);
 					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
-					setVisible(false);
 
 				} catch (Exception e1) {
 					e1.printStackTrace();
@@ -279,7 +330,7 @@ public class MenuUsuario extends JFrame {
 		lblNotificaciones.setForeground(new Color(0, 0, 0));
 		lblNotificaciones.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNotificaciones.setFont(new Font("Arial Narrow", Font.ITALIC, 20));
-		
-		
+		nombreU.setText(p.getNick());
+		OcupacionU.setText(p.getOccupation());
 	}
 }

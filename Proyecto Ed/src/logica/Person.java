@@ -1,10 +1,15 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Person {
+public class Person implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public String nick;
 	private String password;
 	private Pais country;
@@ -57,7 +62,7 @@ public class Person {
 		this.country = country2;
 	}
 
-	public Queue<Request> getSolicitudAmistad() {
+	public LinkedList<Request> getSolicitudAmistad() {
 		return solicitudAmistad;
 	}
 

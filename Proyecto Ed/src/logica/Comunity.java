@@ -1,8 +1,9 @@
 package logica;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
-public class Comunity {
+public class Comunity implements Serializable{
     private int cantdIntegrantes ;
     private LinkedList <Person> integrantes;
 

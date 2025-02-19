@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import javax.swing.JDialog;
 import java.awt.Panel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
@@ -40,7 +42,7 @@ public class CrearCuenta extends JDialog {
 	private RedSystem app;
 	private JLabel lblNewLabel_1;
 
-	public CrearCuenta(RedSystem a) {
+	public CrearCuenta(RedSystem a, Login father) {
 		app = a;
 		setBounds(100, 100, 1018, 637);
 		getContentPane().setLayout(null);
@@ -48,6 +50,7 @@ public class CrearCuenta extends JDialog {
 		panel = new PanelBordeOval(100);
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(45, 77, 626, 301);
+		setLocationRelativeTo(null);
 		setLocationRelativeTo(null);
 		getContentPane().add(panel);
 		panel.setLayout(null);
@@ -123,8 +126,8 @@ public class CrearCuenta extends JDialog {
 					char [] password= passwordFieldContrasenna.getPassword();
 					String clave= new String(password);
 					char [] passwordC= passwordFieldConfirmarContrasenna.getPassword();
-					String claveC= new String(password);
-					if(!(clave.isEmpty()) && clave.equalsIgnoreCase(claveC)) {
+					String claveC= new String(passwordC);
+					if(!(clave.equalsIgnoreCase("")) && clave.equalsIgnoreCase(claveC)) {
 						if(!(textFieldOcupacion.getText().isEmpty())) {
 							Pais pais = (Pais)comboBoxPais.getSelectedItem();
 							boolean a = app.registrarse(textFieldNombreUsuario.getText(), clave, pais,textFieldOcupacion.getText());
@@ -136,9 +139,9 @@ public class CrearCuenta extends JDialog {
 								textFieldOcupacion.setText("");
 							}
 							else {
-								lblNewLabel_1.setForeground(new Color(0, 255, 0));
-								lblNewLabel_1.setText("Creación exitosa.");
-								
+									JOptionPane.showMessageDialog(CrearCuenta.this, "Creación existosa.");
+									father.setVisible(true);
+									dispose();
 								
 							}
 						}else {
@@ -152,6 +155,7 @@ public class CrearCuenta extends JDialog {
 				}else {
 					lblNewLabel_1.setText("Rellene el campo del usuario.");
 				}
+				
 			}
 		});
 		btnRegistrarse.setText("CREAR CUENTA");

@@ -1,5 +1,6 @@
 package logica;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import interfaz.MenuPrincAdmin;
 
 public class MainPrueba {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 
 		RedSystem sis = new RedSystem("Hablemos");
 		ILinkedWeightedEdgeNotDirectedGraph grafo = new LinkedGraph();
@@ -34,9 +35,7 @@ public class MainPrueba {
 		boolean crearSolicitud = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud1 = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(1).getInfo()),((Person) sis.getGraph().getVerticesList().get(2).getInfo()), 9);
 		boolean crearSolicitud2 = sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(1).getInfo()), 9);
-		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(0).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
-		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(1).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
-		sis.crearSolicitud(((Person) sis.getGraph().getVerticesList().get(2).getInfo()),((Person) sis.getGraph().getVerticesList().get(3).getInfo()), 9);
+	
 		System.out.println("Solicitud creada(Samira manda solicitad a adrian: )" + crearSolicitud);
 		System.out.println("Solicitud creada(Marlon manda solicitad a Adrian: )" + crearSolicitud1);
 		System.out.println("Solicitud aceptada(Adrian acepta solicitud de Samaira: "+ sis.crearNuevaRelacion(num1.getNick(), num3));
