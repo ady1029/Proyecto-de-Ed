@@ -6,6 +6,8 @@ import java.util.LinkedList;
 public class Comunity implements Serializable{
     private int cantdIntegrantes ;
     private LinkedList <Person> integrantes;
+    private static final long serialVersionUID = 1L;
+
 
     public Comunity(int cantdIntegrantes, LinkedList <Person> integrantes){
         setCantdintegrantes(cantdIntegrantes);

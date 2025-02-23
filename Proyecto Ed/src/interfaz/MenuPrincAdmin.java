@@ -218,9 +218,35 @@ public class MenuPrincAdmin extends JFrame {
 		menuBar.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Cambiar nombre de usuario");
+
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(app.getAdministrador(), 0,app);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_5);
 		
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Cambiar Contraseña");
+
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(app.getAdministrador(), 1,app);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_2.add(mntmNewMenuItem_6);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -314,10 +340,23 @@ public class MenuPrincAdmin extends JFrame {
 		
 		AvatarCircular avatarCircular_3_1 = new AvatarCircular();
 		avatarCircular_3_1.setAvatar(new ImageIcon(MenuPrincAdmin.class.getResource("/fotos/LogoCErrarSesion2.png")));
-		avatarCircular_3_1.setBounds(572, 11, 140, 152);
+		avatarCircular_3_1.setBounds(572, 22, 140, 119);
 		panelAnimacionCurvas.add(avatarCircular_3_1);
 		
 		JLabel lblAjustesDeLa = new JLabel("Ajustes de la cuenta");
+		lblAjustesDeLa.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(app.getAdministrador(), 1,app);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		lblAjustesDeLa.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblAjustesDeLa.setForeground(Color.BLACK);
 		lblAjustesDeLa.setFont(new Font("Arial Black", Font.PLAIN, 12));
@@ -364,5 +403,26 @@ public class MenuPrincAdmin extends JFrame {
 		lblmatrizDeAdyacencia.setFont(new Font("Arial Black", Font.PLAIN, 12));
 		lblmatrizDeAdyacencia.setBounds(34, 359, 162, 14);
 		panelAnimacionCurvas.add(lblmatrizDeAdyacencia);
+		
+		JLabel lblcambiarClave = new JLabel("(Cambiar Clave)");
+		lblcambiarClave.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(app.getAdministrador(), 1,app);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
+		lblcambiarClave.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblcambiarClave.setHorizontalAlignment(SwingConstants.CENTER);
+		lblcambiarClave.setForeground(Color.BLACK);
+		lblcambiarClave.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		lblcambiarClave.setBounds(562, 167, 150, 14);
+		panelAnimacionCurvas.add(lblcambiarClave);
 	}
 }

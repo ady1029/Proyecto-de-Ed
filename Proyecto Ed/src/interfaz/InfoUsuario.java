@@ -47,6 +47,7 @@ public class InfoUsuario extends JDialog {
 	private BotonAnimacion btnmcnSiguiente_2;
 	private BotonAnimacion btnmcnConfirmar_1;
 	private BotonAnimacion btnmcnAtrs;
+	private List <Person> sinRel;
 
 
 
@@ -55,6 +56,7 @@ public class InfoUsuario extends JDialog {
 		a=p;
 		red = r;
 		aux =0;
+		sinRel = personasSinRel();
 		setBounds(100, 100, 548, 420);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBackground(new Color(55, 165, 255));
@@ -343,6 +345,7 @@ public class InfoUsuario extends JDialog {
 					boolean j = red.crearNuevaRelacion(usuario.getText(), p);
 					if(j) {
 						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud Aceptada.");
+						menuUsuario.inic("Solicitu de amistad de "+ usuario.getText());
 						solic.remove(aux);
 						aux ++;
 						if(aux < solic.size()) {
@@ -352,6 +355,8 @@ public class InfoUsuario extends JDialog {
 							amigosC.setText(Integer.toString(red.cantAmigos(solic.get(aux))));
 							trabajosPC.setText(Integer.toString(red.cantTrabajos(solic.get(aux))));
 						}
+						else
+							dispose();
 					}	
 				}
 			}
@@ -392,10 +397,10 @@ public class InfoUsuario extends JDialog {
 
 		}
 	}
-
 	/**
 	 * @wbp.parser.constructor
 	 */
+
 
 	public InfoUsuario(SolicitudesOpciones menuUsuario,Person p, RedSystem r, int sol) {
 		super(menuUsuario, true);
@@ -481,7 +486,8 @@ public class InfoUsuario extends JDialog {
 		panelBordeOval.add(btnmcnConfirmar_1);
 		btnmcnConfirmar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!act()) {
+				if(act()) {
+					if(esNumero(textFieldTrabC.getText())) {
 					boolean ab = red.crearSolicitud(a, solic.get(aux), Integer.parseInt(textFieldTrabC.getText()));
 					if(ab && (!(textFieldTrabC.getText().equalsIgnoreCase("")))) {
 						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud Enviada.");
@@ -501,11 +507,17 @@ public class InfoUsuario extends JDialog {
 								btnmcnAtrs.setEnabled(false);
 						}
 						else {
+							JOptionPane.showMessageDialog(InfoUsuario.this, "No se puede enviar más solicitudes de amistad. No se encuentran mas usuarios sin relación con usted ");
 							dispose();
 						}
 					}
 					else
 						JOptionPane.showMessageDialog(InfoUsuario.this, "Ya se le ha enviado una solicitud de amistad ");
+					}
+					else {
+						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común no puede estar vacío.");
+						textFieldTrabC.setText("");
+					}
 				}
 				else {
 					JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común tiene que ser un número entero.");
@@ -584,7 +596,139 @@ public class InfoUsuario extends JDialog {
 		}
 
 	}
+	
 
+	public InfoUsuario(SolicitudesOpciones menuUsuario,Person aux, RedSystem r,Person p, boolean bool) {
+		super(menuUsuario, true);
+		a=p;
+		red = r;
+		solic = personasSinRel();
+		sinRel = personasSinRel();
+		setBounds(100, 100, 527, 468);
+		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(55, 165, 255));
+		setLocationRelativeTo(null);
+		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+
+		PanelBordeOval panelBordeOval = new PanelBordeOval(0);
+		panelBordeOval.setBackground(new Color(176, 220, 255));
+		panelBordeOval.setValorEsquinaOvalSI(60);
+		panelBordeOval.setValorEsquinaOvalSD(60);
+		panelBordeOval.setValorEsquinaOvalII(60);
+		panelBordeOval.setValorEsquinaOvalID(60);
+		panelBordeOval.setBounds(22, 11, 449, 339);
+		contentPanel.add(panelBordeOval);
+		panelBordeOval.setLayout(null);
+
+		AvatarCircular avatarCircular = new AvatarCircular();
+		avatarCircular.setAvatar(new ImageIcon(InfoUsuario.class.getResource("/fotos/Imagen de WhatsApp 2025-02-04 a las 19.39.50_96be228b.jpg")));
+		avatarCircular.setBounds(10, 21, 114, 106);
+		panelBordeOval.add(avatarCircular);
+
+		JLabel usuario = new JLabel("");
+		usuario.setFont(new Font("Arial", Font.PLAIN, 24));
+		usuario.setHorizontalAlignment(SwingConstants.CENTER);
+		usuario.setBounds(134, 46, 199, 33);
+		panelBordeOval.add(usuario);
+
+		JLabel ocupacion = new JLabel("");
+		ocupacion.setFont(new Font("Arial", Font.PLAIN, 24));
+		ocupacion.setBounds(144, 79, 189, 33);
+		panelBordeOval.add(ocupacion);
+
+		JLabel lblPais = new JLabel("Pais :");
+		lblPais.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblPais.setBounds(10, 138, 61, 33);
+		panelBordeOval.add(lblPais);
+
+		JLabel lblCantidadDeTrabajos = new JLabel("Cantidad de amigos: ");
+		lblCantidadDeTrabajos.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblCantidadDeTrabajos.setBounds(10, 168, 170, 33);
+		panelBordeOval.add(lblCantidadDeTrabajos);
+
+		JLabel pais = new JLabel("");
+		pais.setFont(new Font("Arial", Font.PLAIN, 18));
+		pais.setBounds(61, 138, 206, 33);
+		panelBordeOval.add(pais);
+
+		JLabel amigosC = new JLabel("");
+		amigosC.setFont(new Font("Arial", Font.PLAIN, 18));
+		amigosC.setBounds(190, 173, 61, 22);
+		panelBordeOval.add(amigosC);
+
+		JLabel lblCantidadDeTrabajos_1 = new JLabel("Cantidad de trabajos publicados: ");
+		lblCantidadDeTrabajos_1.setFont(new Font("Arial", Font.PLAIN, 18));
+		lblCantidadDeTrabajos_1.setBounds(10, 199, 278, 33);
+		panelBordeOval.add(lblCantidadDeTrabajos_1);
+		JLabel trabajosPC = new JLabel("");
+		trabajosPC.setFont(new Font("Arial", Font.PLAIN, 18));
+		trabajosPC.setBounds(277, 204, 61, 22);
+		panelBordeOval.add(trabajosPC);
+
+		JLabel labelCantTComun = new JLabel("Cantidad de trabajos en común:");
+		labelCantTComun.setFont(new Font("Arial", Font.PLAIN, 18));
+		labelCantTComun.setBounds(10, 242, 278, 33);
+		panelBordeOval.add(labelCantTComun);
+
+		textFieldTrabC = new JTextField();
+		textFieldTrabC.setFont(new Font("Arial", Font.PLAIN, 12));
+		textFieldTrabC.setBounds(277, 242, 96, 28);
+		panelBordeOval.add(textFieldTrabC);
+		textFieldTrabC.setColumns(10);
+		usuario.setText(aux.getNick());
+		ocupacion.setText(aux.getOccupation());
+		pais.setText(aux.getCountry().name());
+		amigosC.setText(Integer.toString(red.cantAmigos(aux)));
+		trabajosPC.setText(Integer.toString(red.cantTrabajos(aux)));
+
+		btnmcnConfirmar_1 = new BotonAnimacion();
+		btnmcnConfirmar_1.setBounds(344, 296, 77, 29);
+		panelBordeOval.add(btnmcnConfirmar_1);
+		btnmcnConfirmar_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!act()) {
+					if(esNumero(textFieldTrabC.getText())) {
+						boolean ab = red.crearSolicitud(aux, p, Integer.parseInt(textFieldTrabC.getText()));
+						if(ab && (!(textFieldTrabC.getText().equalsIgnoreCase("")))) {
+							JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud Enviada.");
+							sinRel.remove(aux);
+							menuUsuario.getFather().inic("Solicitud de amistad enviada a "+ aux.getNick());
+							dispose();
+						}
+
+						else {
+							JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común no puede estar vacío.");
+							textFieldTrabC.setText("");
+						}	
+					}
+					else {
+						JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común no puede estar vacío.");
+						textFieldTrabC.setText("");
+					}
+
+				}
+				else {
+					JOptionPane.showMessageDialog(InfoUsuario.this, "Solicitud no enviada. El campo del trabajo en común tiene que ser un número entero.");
+					textFieldTrabC.setText("");
+				}	
+			}
+		});
+		btnmcnConfirmar_1.setForeground(new Color(0, 255, 0));
+		btnmcnConfirmar_1.setText("Enviar");
+
+		BotonAnimacion btnmcnAtras = new BotonAnimacion();
+		btnmcnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnmcnAtras.setText("Salir");
+		btnmcnAtras.setBounds(22, 374, 77, 29);
+		contentPanel.add(btnmcnAtras);
+
+	}
 
 	public List<Person> solicitudes(){
 		List <Person> solicitudes = new ArrayList<Person>();
@@ -614,7 +758,7 @@ public class InfoUsuario extends JDialog {
 		char [] temp = textFieldTrabC.getText().toCharArray();
 		int aux = 0;
 		boolean c= false;
-		while(temp.length < aux + 1 && !c) {
+		while(temp.length >= aux + 1 && !c) {
 			if(temp[aux] != '1' || temp[aux] != '2' || temp[aux] != '3' || temp[aux] != '4' || temp[aux] != '5' ||temp[aux] != '6' || temp[aux] != '7' || temp[aux] != '8' || temp[aux] != '9' || temp[aux] != '0') {
 				c = true;
 			}
@@ -622,5 +766,13 @@ public class InfoUsuario extends JDialog {
 				aux ++;
 		}
 		return c;
+	}
+	public boolean esNumero(String cadena) {
+		try {
+			Integer.parseInt(cadena);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 }

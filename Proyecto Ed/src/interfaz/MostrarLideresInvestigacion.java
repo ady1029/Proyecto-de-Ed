@@ -100,7 +100,7 @@ public class MostrarLideresInvestigacion extends JDialog implements Serializable
 		panel.add(btnmcnAtrs);
 
 		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setAvatar(new ImageIcon(MostrarLideresInvestigacion.class.getResource("/fotos/LideresInvestigacion.jpg")));
+		avatarCircular.setAvatar(new ImageIcon(MostrarLideresInvestigacion.class.getResource("/fotos/195203d41f527.png")));
 		avatarCircular.setBounds(21, 11, 56, 49);
 		panel.add(avatarCircular);
 

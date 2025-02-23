@@ -24,6 +24,7 @@ import componentesVisuales.Linea;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
 import componentesVisuales.PanelBordeOval;
+import cu.edu.cujae.ceis.graph.vertex.Vertex;
 import logica.Person;
 import logica.RedSystem;
 import raven.fbr.Border;
@@ -57,6 +58,8 @@ public class MenuUsuario extends JFrame {
 	private Person a;
 	private JPanel panel_1;
 	private PanelBordeOval panelBordeOval_1;
+	private JLabel nombreU;
+	private JLabel nombreU_1;
 
 	public MenuUsuario(Login login, RedSystem app, Person p) {
 		setResizable(false);
@@ -109,9 +112,13 @@ public class MenuUsuario extends JFrame {
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Ver");
 		mntmNewMenuItem_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(p.getSolicitudAmistad().size()>0) {
 				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app, 1);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
+				}
+				else 
+					JOptionPane.showMessageDialog(MenuUsuario.this, "No presenta solicitudes de amistad");
 			}
 		});
 		mnNewMenu_1.add(mntmNewMenuItem_3);
@@ -138,15 +145,63 @@ public class MenuUsuario extends JFrame {
 		menuBar.add(mnNewMenu_3);
 
 		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Cambiar Nombre de Usuario");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(a, 0,aplic);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_5);
 
 		JMenuItem mntmNewMenuItem_6 = new JMenuItem("Cambiar Contraseña de Usuario");
+		mntmNewMenuItem_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(a, 1,aplic);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_6);
 
 		JMenuItem mntmNewMenuItem_7 = new JMenuItem("Cambiar País");
+		mntmNewMenuItem_7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(a, 3,aplic);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_7);
 
 		JMenuItem mntmNewMenuItem_8 = new JMenuItem("Cambiar Ocupacióm");
+		mntmNewMenuItem_8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{
+					CambiarDatos dialog = new CambiarDatos(a, 2,aplic);
+					dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		mnNewMenu_3.add(mntmNewMenuItem_8);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
@@ -166,7 +221,7 @@ public class MenuUsuario extends JFrame {
 		panelAnimacionCurvas.setLayout(null);
 
 		PanelBordeOval panelBordeOval = new PanelBordeOval(0);
-		panelBordeOval.setBounds(0, 51, 225, 323);
+		panelBordeOval.setBounds(0, 51, 225, 337);
 		panelAnimacionCurvas.add(panelBordeOval);
 		panelBordeOval.setValorEsquinaOvalSD(60);
 		panelBordeOval.setValorEsquinaOvalID(60);
@@ -174,21 +229,16 @@ public class MenuUsuario extends JFrame {
 		panelBordeOval.setLayout(null);
 
 		AvatarCircular avatarCircular = new AvatarCircular();
-		avatarCircular.setAvatar(new ImageIcon(MenuUsuario.class.getResource("/imagenes/icon hombre 1.jpg")));
+		avatarCircular.setAvatar(new ImageIcon(MenuUsuario.class.getResource("/fotos/Imagen de WhatsApp 2025-02-04 a las 19.39.50_96be228b.jpg")));
 		avatarCircular.setBounds(10, 11, 83, 74);
 		panelBordeOval.add(avatarCircular);
 
-		JLabel nombreU = new JLabel("");
+		nombreU = new JLabel("");
 		nombreU.setFont(new Font("Arial", Font.PLAIN, 17));
 		nombreU.setHorizontalAlignment(SwingConstants.CENTER);
-		nombreU.setBounds(86, 23, 140, 22);
+		nombreU.setBounds(73, 23, 140, 22);
 		panelBordeOval.add(nombreU);
-
-		JLabel OcupacionU = new JLabel("");
-		OcupacionU.setHorizontalAlignment(SwingConstants.CENTER);
-		OcupacionU.setFont(new Font("Arial", Font.PLAIN, 17));
-		OcupacionU.setBounds(73, 46, 140, 22);
-		panelBordeOval.add(OcupacionU);
+		nombreU.setText(p.getNick());
 		linea.setBorder(new LineBorder(Color.BLACK, 1, true));
 		linea.setGrosor(1);
 		linea.setBounds(0, 91, 270, 1);
@@ -200,13 +250,16 @@ public class MenuUsuario extends JFrame {
 		panelBordeOval.add(avatarCircular_1);
 
 		JLabel lblNewLabel_1 = new JLabel("Mi Perfil");
+		lblNewLabel_1.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblNewLabel_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				
 				InfoUsuario dialog = new InfoUsuario(MenuUsuario.this,p,app,0);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
-
+				
 			}
 		});
 		lblNewLabel_1.setBounds(47, 111, 134, 14);
@@ -214,16 +267,23 @@ public class MenuUsuario extends JFrame {
 
 		AvatarCircular avatarCircular_1_1 = new AvatarCircular();
 		avatarCircular_1_1.setAvatar(new ImageIcon(MenuUsuario.class.getResource("/fotos/LogoConeccionPersonas.png")));
-		avatarCircular_1_1.setBounds(10, 136, 35, 33);
+		avatarCircular_1_1.setBounds(10, 138, 35, 33);
 		panelBordeOval.add(avatarCircular_1_1);
 
 		JLabel lblNewLabel_1_1 = new JLabel("Mis Amigos");
+		lblNewLabel_1_1.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblNewLabel_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				Vertex aux= app.findNick(p.getNick());
+				if(aux.getAdjacents().size()>0) {
 				MostrarAmigos dialog = new MostrarAmigos(MenuUsuario.this,app,p);
 				dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 				dialog.setVisible(true);
+				}
+				else
+					JOptionPane.showMessageDialog(MenuUsuario.this, "No se encuentran amigos");
 			}
 		});
 		lblNewLabel_1_1.setBounds(47, 145, 151, 14);
@@ -235,6 +295,8 @@ public class MenuUsuario extends JFrame {
 		panelBordeOval.add(avatarCircular_1_1_1);
 
 		JLabel lblNewLabel_1_1_1 = new JLabel("Enviar Solicitud de Amistad");
+		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 13));
+		lblNewLabel_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		lblNewLabel_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -252,7 +314,8 @@ public class MenuUsuario extends JFrame {
 		panelBordeOval.add(avatarCircular_1_1_1_1);
 
 		JLabel lblNewLabel_1_1_1_1 = new JLabel("Ver Solicitudes de Amistad");
-		lblNewLabel_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		lblNewLabel_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 13));
 		lblNewLabel_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -270,10 +333,11 @@ public class MenuUsuario extends JFrame {
 
 		AvatarCircular avatarCircular_1_1_1_1_1 = new AvatarCircular();
 		avatarCircular_1_1_1_1_1.setAvatar(new ImageIcon(MenuUsuario.class.getResource("/fotos/FotoUsuarios.png")));
-		avatarCircular_1_1_1_1_1.setBounds(10, 238, 35, 33);
+		avatarCircular_1_1_1_1_1.setBounds(10, 240, 35, 33);
 		panelBordeOval.add(avatarCircular_1_1_1_1_1);
 
 		JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Buscar Usuario");
+		lblNewLabel_1_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 13));
 		lblNewLabel_1_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -294,10 +358,12 @@ public class MenuUsuario extends JFrame {
 
 		AvatarCircular avatarCircular_1_1_1_1_1_1 = new AvatarCircular();
 		avatarCircular_1_1_1_1_1_1.setAvatar(new ImageIcon(MenuUsuario.class.getResource("/fotos/LogoCerrarSesion1.png")));
-		avatarCircular_1_1_1_1_1_1.setBounds(10, 272, 35, 33);
+		avatarCircular_1_1_1_1_1_1.setBounds(10, 278, 35, 33);
 		panelBordeOval.add(avatarCircular_1_1_1_1_1_1);
 
 		JLabel lblNewLabel_1_1_1_1_1_1 = new JLabel("Cerrar Sesión");
+		lblNewLabel_1_1_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel_1_1_1_1_1_1.setFont(new Font("Arial", Font.PLAIN, 13));
 		lblNewLabel_1_1_1_1_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -307,8 +373,15 @@ public class MenuUsuario extends JFrame {
 				dispose();
 			}
 		});
-		lblNewLabel_1_1_1_1_1_1.setBounds(47, 282, 118, 14);
+		lblNewLabel_1_1_1_1_1_1.setBounds(47, 285, 118, 14);
 		panelBordeOval.add(lblNewLabel_1_1_1_1_1_1);
+		
+		nombreU_1 = new JLabel((String) null);
+		nombreU_1.setHorizontalAlignment(SwingConstants.CENTER);
+		nombreU_1.setFont(new Font("Arial", Font.PLAIN, 17));
+		nombreU_1.setBounds(73, 56, 140, 22);
+		panelBordeOval.add(nombreU_1);
+		nombreU_1.setText(p.getOccupation());
 
 		panelBordeOval_1 = new PanelBordeOval(0);
 		panelBordeOval_1.setBackground(new Color(55, 165, 255));
@@ -325,7 +398,7 @@ public class MenuUsuario extends JFrame {
 		btnmcnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panelBordeOval.setVisible(false);
-				inic("Hola2");
+				panel_1.removeAll();
 				panelBordeOval.setVisible(true);
 			}
 		});
@@ -350,7 +423,6 @@ public class MenuUsuario extends JFrame {
 		panel_1 = new JPanel();
 		panel_1.setLayout(new BoxLayout(panel_1, BoxLayout.Y_AXIS));
 		scrollPane.setViewportView(panel_1);
-		OcupacionU.setText(" ");
 	}
 	public void inic(String string) {
 		panelBordeOval_1.setVisible(false);
@@ -360,7 +432,7 @@ public class MenuUsuario extends JFrame {
 			panel.setBackground(new Color(55, 165, 255));
 			panel.add(linea1);
 			panel.setBorder(new LineBorder(Color.black));
-			panel.add(new JLabel(string + i));
+			panel.add(new JLabel(string));
 			panel_1.add(panel);
 		}
 		panelBordeOval_1.setVisible(true);

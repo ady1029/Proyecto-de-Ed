@@ -27,6 +27,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Cursor;
 
 public class SolicitudesOpciones extends JDialog {
 
@@ -61,6 +62,21 @@ public class SolicitudesOpciones extends JDialog {
 			contentPanel.add(panelAnimacionCurvas);
 			{
 				JLabel lblNewLabel_1_1_1_1_1 = new JLabel("Buscar Usuario");
+				lblNewLabel_1_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+				lblNewLabel_1_1_1_1_1.addMouseListener(new MouseAdapter() {
+					@Override
+					public void mouseClicked(MouseEvent e) {
+						try{
+							PanelBuscar dialog = new PanelBuscar(SolicitudesOpciones.this, aplic, p);
+							dialog.setDefaultCloseOperation(dialog.DISPOSE_ON_CLOSE);
+							dialog.setVisible(true);
+
+						} catch (Exception e1) {
+							e1.printStackTrace();
+						}
+
+					}
+				});
 				lblNewLabel_1_1_1_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 				lblNewLabel_1_1_1_1_1.setBounds(94, 166, 118, 14);
 				panelAnimacionCurvas.add(lblNewLabel_1_1_1_1_1);
@@ -79,6 +95,7 @@ public class SolicitudesOpciones extends JDialog {
 			}
 			{
 				JLabel lblNewLabel_1_1_1_1 = new JLabel("Ver Usuarios Disponibles");
+				lblNewLabel_1_1_1_1.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 				lblNewLabel_1_1_1_1.addMouseListener(new MouseAdapter() {
 					@Override
 					public void mouseClicked(MouseEvent arg0) {
